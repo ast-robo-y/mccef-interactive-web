@@ -168,6 +168,7 @@ text_2_cz = '''Tým vedený matematickým stratégem a technickými analytiky se
                Jejich strategie, vyvíjená ve spolupráci s Interactive Brokers od roku 2007, prošla finančními krizemi,
                demonstrující odolnost a ziskovost. Cílem fondu je konzistentní, racionální analýza se zaměřením na snižování rizik
                spíše než honit se za krátkodobými zisky.'''
+text_3_cz = '''Další informace můžete najít na stránce [mcviva.com](https://www.mcviva.com/).'''
 
 motto_eng = ' *"Success is not about perfection: Just avoid big mistakes and favorable results will naturally follow."* '
 title_1_eng = 'About'
@@ -180,6 +181,7 @@ text_2_eng = '''The team, led by mathematical strategist and technical analysts 
                 Their strategy, developed in collaboration with Interactive Brokers since 2007, has navigated through financial crises, 
                 demonstrating resilience and profitability. The fund's goal is consistent, rational analysis, focusing on risk reduction 
                 rather than chasing short-term gains.'''
+text_3_eng = '''You can find more information about us on the website [mcviva.com](https://www.mcviva.com/).'''
 
 cumul_text_cz = (
     "📌 **Kumulativní metoda**: založena na složeném úročení.\n\n"
@@ -293,11 +295,13 @@ with coltext[0]:
         st.title(title_1_cz)
         st.markdown(text_1_cz)
         st.markdown(text_2_cz)
+        st.markdown(text_3_cz)
         st.header('Srovnání s jinými fondy')
     else:
         st.title(title_1_eng)
         st.markdown(text_1_eng)
         st.markdown(text_2_eng)
+        st.markdown(text_3_eng)
         st.header('Comparison with other Funds')
     st.markdown(' ')
     buttons_cols = st.columns([2,1])
