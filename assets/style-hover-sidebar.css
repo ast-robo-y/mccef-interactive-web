@@ -1,0 +1,182 @@
+
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+  
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
+
+
+/* ---- Pre zariadenia na Notebooku so sirkou od 1200 - 1920 px !!! ---- */
+@media(hover: hover) and (min-width: 1200px){
+    
+    /* --------------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------------- */
+                                    /* SIDE BAR STUFF HERE !!!!! */
+    /* --------------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------------- */
+
+
+    /* Odstrani cast header ... horizontalny pas po celej sirke uplne na vrchu neobsluhujem... */
+    header[data-testid="stHeader"] {
+        display: none;
+    }
+
+    /* Hlavna transformacna cast - ovladaci panel pre sidebar.. urcenie farby a sirky vysky a tak... */
+    section[data-testid='stSidebar'] {
+        height: 100vh;
+        /*width: 80px !important; 
+        min-width: 80px !important;*/
+        /*width: 95px !important;
+        min-width: 95px !important;*/
+        width: calc(80px + (95 - 80) * ((100vw - 1200px) / (1920 - 1200))) !important;
+        min-width: calc(80px + (95 - 80) * ((100vw - 1200px) / (1920 - 1200)));
+        transform:translateX(0px);
+        position: relative;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgba(116, 151, 232, 0.365);
+        overflow-x: hidden;
+        transition: all 0.5s ease;
+        padding-top: 0vh;
+        white-space: nowrap;
+    }
+
+    /* Nastavuje minimalnu sirku "priblizeneho" sidebaru, ked sa nan ukaze mysou... */
+    section[data-testid='stSidebar']:hover{
+        /*min-width: 190px !important;*/
+        /*min-width: 230px !important;*/
+        min-width: calc(190px + (230 - 190) * ((100vw - 1200px) / (1920 - 1200))) !important;
+        }
+    
+    /* Nasledovne prikazy sa venuju logu a jeho skalovaniu... */
+    div[data-testid="stSidebarCollapsedControl"]{
+        display: none;
+    }
+    
+    div[data-testid="stSidebarHeader"], div[data-testid="stSidebarHeader"] > *,
+    div[data-testid="collapsedControl"], div[data-testid="collapsedControl"] > * {
+        display: flex;
+        align-items: center;
+    }
+
+    /* toto "vypne" sidebar tlacitko na expand/kolaps */
+    button[data-testid="stBaseButton-headerNoPadding"]{
+        display: none;
+    }
+
+    /* tieto dva bloky so section[..] nastavuju ako sa meni logo v lavom hornom rohu pri hoverovani*/
+    section[data-testid='stSidebar'] img {
+        transition: width 0.45s, height 0.5s;
+        height: auto;
+        /*width: 65px;
+        margin-left: -15px !important;*/
+        /*width: 80px;
+        margin-left: -16px !important;*/
+        width: calc(65px + (80 - 65) * ((100vw - 1200px) / (1920 - 1200)));
+        margin-left: calc(-15px + (-16 + 15) * ((100vw - 1200px) / (1920 - 1200))) !important;
+        vertical-align: middle;
+    }
+    /* Larger logo when sidebar expands on hover */
+    section[data-testid='stSidebar']:hover img {
+        /*width: 175px !important;*/
+        /*min-width: 190px !important;
+        width: 190px !important;*/
+        width: calc(175px + (190 - 175) * ((100vw - 1200px) / (1920 - 1200))) !important;
+        min-width: calc(140px + (190 - 140) * ((100vw - 1200px) / (1920 - 1200))) !important;
+    }
+
+    /* tu sa nastavuje font na bold style v sidebare - pre jednotlive nazvy podkapitol... */
+    span[class='st-emotion-cache-6tkfeg eczjsme13'],
+    span[class='st-emotion-cache-1rtdyuf eczjsme13']{
+        /*height: 40px;
+        font-size: 20px;
+        margin-left: 7.5px !important;*/
+        /*height: 50px;
+        font-size: 26px;
+        margin-left: 18px !important;*/
+        height: calc(40px + (50 - 40) * ((100vw - 1200px) / (1920 - 1200)));
+        font-size: calc(20px + (26 - 20) * ((100vw - 1200px) / (1920 - 1200)));
+        margin-left: calc(7.5px + (18 - 7.5) * ((100vw - 1200px) / (1920 - 1200))) !important;
+        font-weight: bold !important;
+        vertical-align: middle;
+    }
+
+    /* zmena velkosti material icons v sidebare*/
+    span[data-testid="stIconMaterial"] {
+        /*font-size: 30px !important; 
+        margin-left: -7.5px !important;*/
+        /*font-size: 40px !important;
+        margin-left: -5px !important;*/
+        font-size: calc(30px + (40 - 30) * ((100vw - 1200px) / (1920 - 1200))) !important;
+        margin-left: calc(-7.5px + (-5 + 7.5) * ((100vw - 1200px) / (1920 - 1200))) !important;
+        vertical-align: middle;  
+    }
+
+    /* Uprava nazvov ako Account a Tools atd...*/
+    header[data-testid="stNavSectionHeader"]{
+        /*font-size: 12px !important; 
+        margin-left: 17.5px !important;*/
+        /*font-size: 16px !important;
+        margin-left: 18px !important;*/
+        font-size: calc(12px + (16 - 12) * ((100vw - 1200px) / (1920 - 1200))) !important;
+        margin-left: calc(17.5px + (18 - 17.5) * ((100vw - 1200px) / (1920 - 1200)));
+        vertical-align: middle;  
+    }
+
+    /* Custom Divider Style - Divider za Tools ikonami v sidebare */
+    div[data-testid="stSidebarHeader"]::after {
+        content: '';
+        display: block;
+        border-bottom: 1px solid #ccc; 
+        margin: 10px 0;  
+    }
+    /* Keby chcem Divider medzi LOGO a Accounts v Sidebare*/
+    /*ul[data-testid="stSidebarNavItems"]::before {
+        content: '';
+        display: block;
+        border-bottom: 1px solid #a4a2a2;
+        margin: 10px 0; 
+    }*/
+    /* Optional: Customizing the added div if necessary */
+    .custom-divider {
+        display: block; /* We're using the CSS pseudo-element for the divider instead */
+    }
+
+    /* --------------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------------- */
+    /* --------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+/* upravujem hlavne okno v stMain (mimo sidebaru), aby to bolo vyssie na stranke*/
+div[data-testid='stVerticalBlock']{
+    margin-top: 0px !important;  /* Remove any default margin */
+    padding-top: 0px !important; /* Remove any default padding */
+    position: relative;  /* Ensure it doesn't affect other positioning */
+    top: -25px !important;  /* Move it upwards by adjusting the top property */
+}
+
+div[data-testid="stFullScreenFrame"]{
+    position: relative;  /* Ensure it doesn't affect other positioning */
+    top: 2px !important;  /* Move it upwards by adjusting the top property */
+    left: 5px !important
+}
+
+
+}
+/*---------------------------------------------------------------------------------*/
