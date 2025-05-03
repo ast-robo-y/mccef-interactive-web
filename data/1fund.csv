@@ -1,10 +1,10 @@
 Introduction,Header,Name,Account,Alias,BaseCurrency,AccountType,AnalysisPeriod,PerformanceMeasure
-Introduction,Data,Stichting MC Concordia Equity Fund,"U7440979, U3440979",MCCEF,USD,,"February 27, 2020 to April 9, 2025 (Daily)",TWR
-Breakdown of Accounts,MetaInfo,Analysis Period,"February 27, 2020 - April 9, 2025"
+Introduction,Data,Stichting MC Concordia Equity Fund,"U7440979, U3440979",MCCEF,USD,,"February 27, 2020 to April 25, 2025 (Daily)",TWR
+Breakdown of Accounts,MetaInfo,Analysis Period,"February 27, 2020 - April 25, 2025"
 Breakdown of Accounts,Header,Account,Name,Beginning NAV,Ending NAV,Return,Deposits,Withdrawals,Dividends,Interest,Fees
 Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,0,41.407194902,1183256.4999148,-1366512.282522,2854.69,-246.633467,0
-Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,1280236.36182023,24.8391731,2202572.76077144,-1340242.2199148,89789.687119,102147.1035699,-80
-Time Period Benchmark Comparison,MetaInfo,Analysis Period,"February 27, 2020 - April 9, 2025"
+Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,1358128.364534379,32.434624612,2202572.76077144,-1340242.2199148,90130.227119,102147.1035699,-80
+Time Period Benchmark Comparison,MetaInfo,Analysis Period,"February 27, 2020 - April 25, 2025"
 Time Period Benchmark Comparison,Header,Date,BM1,BM1Return,Consolidated,ConsolidatedReturn
 Time Period Benchmark Comparison,Data,02/27/20,VT,-3.698416818,Consolidated,0
 Time Period Benchmark Comparison,Data,02/28/20,VT,-0.323406549,Consolidated,0
@@ -1340,6 +1340,18 @@ Time Period Benchmark Comparison,Data,04/04/25,VT,-5.960854093,Consolidated,-4.7
 Time Period Benchmark Comparison,Data,04/07/25,VT,-1.201513718,Consolidated,-0.553841731
 Time Period Benchmark Comparison,Data,04/08/25,VT,-1.216125634,Consolidated,0.53796285
 Time Period Benchmark Comparison,Data,04/09/25,VT,8.549825514,Consolidated,3.310347347
+Time Period Benchmark Comparison,Data,04/10/25,VT,-2.786211824,Consolidated,0.725792486
+Time Period Benchmark Comparison,Data,04/11/25,VT,2.066874885,Consolidated,1.261716563
+Time Period Benchmark Comparison,Data,04/14/25,VT,0.94500945,Consolidated,1.647075587
+Time Period Benchmark Comparison,Data,04/15/25,VT,0.09807418,Consolidated,0.951990592
+Time Period Benchmark Comparison,Data,04/16/25,VT,-1.487485526,Consolidated,-0.041057348
+Time Period Benchmark Comparison,Data,04/17/25,VT,0.524412297,Consolidated,-0.467017641
+Time Period Benchmark Comparison,Data,04/18/25,VT,0,Consolidated,0.224535294
+Time Period Benchmark Comparison,Data,04/21/25,VT,-1.547040835,Consolidated,0.572838338
+Time Period Benchmark Comparison,Data,04/22/25,VT,2.183446008,Consolidated,-0.38490098
+Time Period Benchmark Comparison,Data,04/23/25,VT,1.278497988,Consolidated,-0.226556463
+Time Period Benchmark Comparison,Data,04/24/25,VT,1.739053672,Consolidated,1.484875103
+Time Period Benchmark Comparison,Data,04/25/25,VT,0.477223427,Consolidated,0.200531468
 Disclosure,"IMPORTANT NOTE: This portfolio analysis was generated using Interactive Brokers' PortfolioAnalyst tool, which allows Interactive Brokers clients to generate analyses of their accounts using market data provided by third parties along with trade and account data contained in Interactive Brokers' systems. This analysis is for information purposes only and is provided AS IS. Interactive Brokers makes no warranty of any kind, express or implied, as to this report analysis and its contents. The data provided for use in this Portfolio Analysis is believed to be accurate but completeness and accuracy of the information is not guaranteed, and Interactive Brokers has no liability with respect thereto. The data regarding accounts held outside of Interactive Brokers is obtained either directly from you or from the financial institutions holding those accounts through a third-party service provider and Interactive Brokers has not reviewed its accuracy.
 
 This material in this analysis is intended only as a reference and should not be relied upon for the maintenance of your books and records for tax, accounting, financial, or regulatory reporting or for any other purposes. This analysis is not an offer or a solicitation of an offer to buy or sell any security. This material does not and is not intended to take into account the particular financial conditions, investment objectives or requirements of individual customers. Before acting on this material, you should consider whether it is suitable for your particular circumstances and, as necessary, seek professional advice."
