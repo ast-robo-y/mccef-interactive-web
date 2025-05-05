@@ -1,10 +1,10 @@
 Introduction,Header,Name,Account,Alias,BaseCurrency,AccountType,AnalysisPeriod,PerformanceMeasure
-Introduction,Data,Stichting MC Concordia Equity Fund,"U7440979, U3440979",MCCEF,USD,,"February 27, 2020 to April 25, 2025 (Daily)",TWR
-Breakdown of Accounts,MetaInfo,Analysis Period,"February 27, 2020 - April 25, 2025"
+Introduction,Data,Stichting MC Concordia Equity Fund,"U7440979, U3440979",MCCEF,USD,,"February 27, 2020 to May 2, 2025 (Daily)",TWR
+Breakdown of Accounts,MetaInfo,Analysis Period,"February 27, 2020 - May 2, 2025"
 Breakdown of Accounts,Header,Account,Name,Beginning NAV,Ending NAV,Return,Deposits,Withdrawals,Dividends,Interest,Fees
 Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,0,41.407194902,1183256.4999148,-1366512.282522,2854.69,-246.633467,0
-Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,1358128.364534379,32.434624612,2202572.76077144,-1340242.2199148,90130.227119,102147.1035699,-80
-Time Period Benchmark Comparison,MetaInfo,Analysis Period,"February 27, 2020 - April 25, 2025"
+Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,1437828.311633115,35.647507736,2248572.76077144,-1340242.2199148,90301.867119,102147.1035699,-80
+Time Period Benchmark Comparison,MetaInfo,Analysis Period,"February 27, 2020 - May 2, 2025"
 Time Period Benchmark Comparison,Header,Date,BM1,BM1Return,BM2,BM2Return,BM3,BM3Return,Consolidated,ConsolidatedReturn
 Time Period Benchmark Comparison,Data,02/27/20,INDU,-4.400252396,SPX,-4.416327867,RUT,-3.518444049,Consolidated,0
 Time Period Benchmark Comparison,Data,02/28/20,INDU,-1.314335125,SPX,-0.823832736,RUT,-1.414127595,Consolidated,0
@@ -1352,6 +1352,11 @@ Time Period Benchmark Comparison,Data,04/22/25,INDU,2.663240976,SPX,2.511728898,
 Time Period Benchmark Comparison,Data,04/23/25,INDU,1.070738291,SPX,1.666111926,RUT,1.527525023,Consolidated,-0.226556463
 Time Period Benchmark Comparison,Data,04/24/25,INDU,1.229164757,SPX,2.025908413,RUT,2.003855894,Consolidated,1.484875103
 Time Period Benchmark Comparison,Data,04/25/25,INDU,0.05013294,SPX,0.737314418,RUT,0.006181073,Consolidated,0.200531468
+Time Period Benchmark Comparison,Data,04/28/25,INDU,0.284417964,SPX,0.064069963,RUT,0.40532464,Consolidated,0.715254477
+Time Period Benchmark Comparison,Data,04/29/25,INDU,0.745831406,SPX,0.580239656,RUT,0.559329734,Consolidated,0.410427647
+Time Period Benchmark Comparison,Data,04/30/25,INDU,0.349736797,SPX,0.147999489,RUT,-0.614950752,Consolidated,-0.112710717
+Time Period Benchmark Comparison,Data,05/01/25,INDU,0.205560156,SPX,0.629908818,RUT,0.598578803,Consolidated,-0.232812375
+Time Period Benchmark Comparison,Data,05/02/25,INDU,1.385101843,SPX,1.472661283,RUT,2.272895439,Consolidated,1.633819108
 Disclosure,"IMPORTANT NOTE: This portfolio analysis was generated using Interactive Brokers' PortfolioAnalyst tool, which allows Interactive Brokers clients to generate analyses of their accounts using market data provided by third parties along with trade and account data contained in Interactive Brokers' systems. This analysis is for information purposes only and is provided AS IS. Interactive Brokers makes no warranty of any kind, express or implied, as to this report analysis and its contents. The data provided for use in this Portfolio Analysis is believed to be accurate but completeness and accuracy of the information is not guaranteed, and Interactive Brokers has no liability with respect thereto. The data regarding accounts held outside of Interactive Brokers is obtained either directly from you or from the financial institutions holding those accounts through a third-party service provider and Interactive Brokers has not reviewed its accuracy.
 
 This material in this analysis is intended only as a reference and should not be relied upon for the maintenance of your books and records for tax, accounting, financial, or regulatory reporting or for any other purposes. This analysis is not an offer or a solicitation of an offer to buy or sell any security. This material does not and is not intended to take into account the particular financial conditions, investment objectives or requirements of individual customers. Before acting on this material, you should consider whether it is suitable for your particular circumstances and, as necessary, seek professional advice."

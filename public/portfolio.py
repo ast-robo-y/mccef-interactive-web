@@ -11,7 +11,6 @@ from MCCEFfuncs import *
 
 
 link_positions = 'data/Positions.csv'
-link_sectors = 'data/sectors.csv'
 link_trades = 'data/AllTrades.csv'
 
 @st.cache_data
@@ -30,7 +29,7 @@ def tick_OHLC_GEN(tick):
     return ohlc
 
 @st.fragment
-def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, tick):
+def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, tick, time):
     df_trades_ticker = trades[trades["Symbol"] == tick]
     df['1wma'] = df['Close'].rolling(window=7).mean()
     df['1mma'] = df['Close'].rolling(window=30).mean()
@@ -40,70 +39,39 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, tick):
     df_trades = df_trades.set_index("TradeDate")
     df_trades = df_trades[~df_trades.index.duplicated(keep="last")]
     df_trades = df_trades.reindex(df.index, method="ffill").fillna(0)
-
-    ohlc_last_365 = df.loc[(datetime.now(pytz.timezone("America/New_York"))-timedelta(days=365)):]
-    ohlc_min = ohlc_last_365["Low"].min()
-    ohlc_max = ohlc_last_365["High"].max()
-
-    df_trades_365 = df_trades.loc[(datetime.now(pytz.timezone("America/New_York"))-timedelta(days=365)):]
-    tr_min = df_trades_365["QuantityVisual"].min()
-    tr_max = df_trades_365["QuantityVisual"].max()
-
-    today = date.today()
-    one_y_ago = today - timedelta(days=365)
+    
+    now_ny = datetime.now(pytz.timezone("America/New_York"))
+    today = now_ny.date()
+    if time == 0:
+        n_days = 90
+        start_date = today - timedelta(days=n_days)
+    elif time == 1:
+        n_days = 182
+        start_date = today - timedelta(days=n_days)
+    elif time == 2:
+        n_days = 365
+        start_date = today - timedelta(days=n_days)
+    elif time == 3:
+        n_days = (today - date(today.year, 1, 1)).days
+        start_date = datetime(today.year, 1, 1)
+    elif time == 4:
+        n_days = (today - df.index.min().date()).days
+        start_date = df.index.min()
+    if time == 4:
+        visible_df = df.copy()
+    else:
+        visible_df = df[(df.index >= (now_ny-timedelta(n_days))) & (df.index <= now_ny)]
+    visible_min = visible_df["Low"].min()
+    visible_max = visible_df["High"].max()
+    dashing = 'dot' #'solid' #'dot'
 
     fig = make_subplots(
         rows=2,
         cols=1,
         shared_xaxes=True,
-        row_heights=[0.7,0.3],
+        row_heights=[0.8,0.2],
         vertical_spacing = 0.1,
     )
-    dashing = 'dot' #'solid' #'dot'
-    fig.add_trace(
-        go.Scatter(x=df.index,
-                y=df['1wma'],
-                line = dict(color = 'blue', dash=dashing), name = '1-week MA', opacity=0.6,
-                hovertemplate="<b>%{x} :</b>  "+"<b> $%{y:.2f}<extra></extra>"
-                ),
-                row=1,
-                col=1
-    )
-
-    fig.add_trace(
-        go.Scatter(x=df.index,
-                y=df['1mma'],
-                line = dict(color = 'magenta', dash=dashing), name = '1-month MA', opacity=0.6,
-                hovertemplate="<b>%{x} :</b>  "+"<b> $%{y:.2f}<extra></extra>"
-                ),
-                row=1,
-                col=1
-    )
-
-    fig.add_trace(go.Scatter(
-        x=df_trades_ticker[df_trades_ticker["Buy/Sell"]=='BUY']["TradeDate"],
-        y=df_trades_ticker[df_trades_ticker["Buy/Sell"]=='BUY']["TradePrice"],
-        mode="markers",
-        marker=dict(color="green", size=12, symbol="triangle-up", 
-                    line=dict(width=1, color='darkblue')),
-        name="Buy Trades",
-        hovertemplate="<b>%{x} :</b>  "+"<b> $%{y:.2f}<extra></extra>"
-    ),
-    row=1,
-    col=1
-    )
-
-    fig.add_trace(go.Scatter(
-        x=df_trades_ticker[df_trades_ticker["Buy/Sell"]=='SELL']["TradeDate"],
-        y=df_trades_ticker[df_trades_ticker["Buy/Sell"]=='SELL']["TradePrice"],
-        mode="markers",
-        marker=dict(color="red", size=12, symbol="triangle-down", 
-                    line=dict(width=1, color='darkblue')),
-        name="Sell Trades",
-        hovertemplate="<b>%{x} :</b>  "+"<b> $%{y:.2f}<extra></extra>"
-    ),
-    row=1,
-    col=1)
 
     fig.add_trace(
         go.Candlestick(
@@ -117,10 +85,56 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, tick):
                 increasing_fillcolor='#3D9970',
                 decreasing_line_color='#FF4136',
                 decreasing_fillcolor='#FF4136',
-                #yaxis='y',
                 ),
                 row=1,
                 col=1)
+
+    fig.add_trace(go.Scatter(
+        x=df_trades_ticker[df_trades_ticker["Buy/Sell"]=='BUY']["TradeDate"],
+        y=df_trades_ticker[df_trades_ticker["Buy/Sell"]=='BUY']["TradePrice"],
+        mode="markers",
+        marker=dict(color="green", size=12, symbol="triangle-up", 
+                    line=dict(width=1, color='darkblue')),
+        name="Buy Trades",
+        hovertemplate="<b> BUY %{x} :</b>  "+"<b> $%{y:.2f}<extra></extra>"
+    ),
+    row=1,
+    col=1
+    )
+
+    fig.add_trace(go.Scatter(
+        x=df_trades_ticker[df_trades_ticker["Buy/Sell"]=='SELL']["TradeDate"],
+        y=df_trades_ticker[df_trades_ticker["Buy/Sell"]=='SELL']["TradePrice"],
+        mode="markers",
+        marker=dict(color="red", size=12, symbol="triangle-down", 
+                    line=dict(width=1, color='darkblue')),
+        name="Sell Trades",
+        hovertemplate="<b> SELL %{x} :</b>  "+"<b> $%{y:.2f}<extra></extra>"
+    ),
+    row=1,
+    col=1)
+
+    fig.add_trace(
+        go.Scatter(x=df.index,
+                y=df['1wma'],
+                line = dict(color = 'blue', dash=dashing), name = '1-week MA', opacity=0.6,
+                hovertemplate="<b> WMA %{x} :</b>  "+"<b> $%{y:.2f}<extra></extra>",
+                visible='legendonly',
+                ),
+                row=1,
+                col=1,
+    )
+
+    fig.add_trace(
+        go.Scatter(x=df.index,
+                y=df['1mma'],
+                line = dict(color = 'magenta', dash=dashing), name = '1-month MA', opacity=0.6,
+                hovertemplate="<b> MMA %{x} :</b>  "+"<b> $%{y:.2f}<extra></extra>",
+                visible='legendonly',
+                ),
+                row=1,
+                col=1,
+    )
 
     fig.add_trace(go.Bar(x=df_trades.index, 
                         y=df_trades['QuantityVisual'], 
@@ -131,66 +145,102 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, tick):
                         row=2,
                         col=1
                     )
-    fig.data = (
-        fig.data[0:2] +   # lines
-        fig.data[2:4] +   # scatters
-        fig.data[4:]      # candlestick
-    )
+    
     fig.update_layout(
+        margin=dict(t=40, b=40, l=50, r=20), 
         showlegend=True, 
-        height=600,
+        height=650,
         plot_bgcolor='white',
-        xaxis=dict(title='Date', side='bottom', 
-                range=[one_y_ago.strftime("%Y-%m-%d"), 
-                        (today + timedelta(days=3)).strftime("%Y-%m-%d")],
-                        type="date", 
-                        rangeselector=dict(buttons=list([
-            dict(count=1, label="1m", step="month", stepmode="backward"),
-            dict(count=6, label="6m", step="month", stepmode="backward"),
-            dict(count=1, label="1y", step="year", stepmode="backward"),
-            dict(count=1, label="YTD", step="year", stepmode="todate"),
-            dict(step="all")])),
-            ),
-        xaxis_rangeslider_visible=False,
-        yaxis=dict(title="Price", #scaleanchor="x", #overlaying='y2',
-                #range=[(2*ohlc_min - ohlc_max), 1.05*ohlc_max],
+        xaxis2=dict(title=("Date" if language_on else "Období"), side='bottom', type="date",
+                range=[start_date, (today + timedelta(days=3))],
                 ),
-        #yaxis2=dict(title="{}".format('% of Max Position'), #side="right",
-                    #range=[tr_min-2, 2.2*tr_max]
-        #            ),
-        yaxis2=dict(title="{}".format('Position Quantity'), #side="right",
-                    #range=[tr_min-2, 2.2*tr_max]
+        xaxis_rangeslider_visible=False,
+        yaxis=dict(title=("Price" if language_on else "Cena"),
+                range=[visible_min * 0.98, visible_max * 1.02],
+                ),
+        yaxis2=dict(title=("Position / Max Position (%)" if language_on else "Pozice / Max Pozice (%)"),
                     ),
     ) 
-    #fig.layout.yaxis2.showgrid=False
-
-    #fig.update_xaxes(mirror=True, ticks='outside', showline=True, linecolor='black', )
-    #fig.update_yaxes(mirror=True, ticks='outside', showline=True, linecolor='black',
-    #                gridcolor='lightgrey', fixedrange=False, minor_ticks="outside", ) 
-    
     return fig
 
 
+option_map = {
+    0: 'CZ',
+    1: 'ENG',
+}
+time_options = {
+    0: "3M",
+    1: "6M",
+    2: "1Y",
+    3: "YTD",
+    4: "All",
+}
+
+range_text_cz = """
+- **1M**: Poslední 3 měsíce
+- **6M**: Poslední půl rok
+- **1Y**: Poslední rok 
+- **YTD**: Od začátku aktuálního roku
+- **All**: Od začátku (2020)
+"""
+range_text_eng = """
+- **1M**: Last 3 Months
+- **6M**: Last Half a Year
+- **1Y**: Last Year
+- **YTD**: Year To Date
+- **All**: From the Start (2020)
+"""
 
 
+if "language2" not in st.session_state:
+    st.session_state["language2"] = min(option_map.keys())
+if "sel_date" not in st.session_state:
+    st.session_state["sel_date"] = 2
 
-st.header('Candlestick Plot')
-sel_ticker = st.selectbox("Select a Ticker",
-                          list(uniq_ticks))
+coltop = st.columns([14, 2],)
+with coltop[0]:
+    st.header('Candlestick Plot & Trades' if st.session_state["language2"] else 'Svíčkový graf a vykonané obchody')
+with coltop[1]:
+    st.markdown(' ')
+    language_on = st.pills(label=('Select language' if st.session_state["language2"] else 'Vyberte jazyk'), 
+                           options = option_map.keys(),
+                           format_func = lambda option: option_map[option],
+                           selection_mode='single',
+                           key='language2', 
+                           help=("Změna jazyka obsahu: Čeština ⇄ Angličtina." if not st.session_state["language2"] else "Change the language of the content Czech ⇄ English."))
+colsel = st.columns([2,2])
+with colsel[0]:
+    sel_date = st.segmented_control(
+            ("📆 Vyberte časové období" if not language_on else "📆 Select Time Period" ),
+            options=time_options.keys(),
+            format_func = lambda option: time_options[option],
+            selection_mode='single',
+            key='sel_date',
+            help=(range_text_cz if not language_on else range_text_eng)
+        )
+with colsel[1]:
+    sel_ticker = st.selectbox(("Select a Ticker" if language_on else "Vyberte Ticker"), list(uniq_ticks))
 
 ohlc = tick_OHLC_GEN(sel_ticker)
-st.plotly_chart(plot_candlestick(ohlc, trades, sel_ticker))
-st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 04/30/2025</span>', unsafe_allow_html=True)
+with st.container(border=True, #height=500
+                      ):
+    st.plotly_chart(plot_candlestick(ohlc, trades, sel_ticker, time=sel_date))
+if not st.session_state['language2']:
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 5. května 2025</span>', unsafe_allow_html=True)
+else:
+    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 05/05/2025</span>', unsafe_allow_html=True)
 st.divider()
 
-
-st.header('Actual Positions Held')
+st.header('Actual Positions Portfolio' if language_on else 'Portfolio aktuálních pozic')
 
 @st.fragment
 def Treemap_fig(df, colors):
     return My_Treemap(df, colors)
-
-st.plotly_chart(Treemap_fig(portfolio, 'balance'))
-st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 04/30/2025</span>', unsafe_allow_html=True)
-
+with st.container(border=True, #height=500
+                      ):
+    st.plotly_chart(Treemap_fig(portfolio, 'balance'))
+if not st.session_state['language2']:
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 5. května 2025</span>', unsafe_allow_html=True)
+else:
+    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 05/05/2025</span>', unsafe_allow_html=True)
 

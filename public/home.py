@@ -7,64 +7,8 @@ import yfinance as yf
 from MCCEFfuncs import *
 
 @st.fragment
-def small_graph(data):
-    fig_spark = go.Figure(
-        data=go.Scatter(
-            x = data.index,
-            y=list(data),
-            mode="lines",
-            fill='tozeroy',
-            line_color = 'darkblue',
-            fillcolor='lightskyblue',
-        ),
-    )
-    fig_spark.update_traces(hovertemplate="<b>%{x} </b><br> %{y:.2f} <extra></extra>")
-    fig_spark.update_xaxes(visible=False, fixedrange=True)
-    fig_spark.update_yaxes(visible=False, fixedrange=True, range=[np.min(list(data))*0.995, np.max(list(data))*1.005])
-    fig_spark.update_layout(
-        showlegend=False,
-        plot_bgcolor='white',
-        height=80,
-        margin=dict(t=0, l=0, r=0, b=0, pad=0)
-    )
-    return fig_spark
-
-@st.fragment
-def tick_metric(ticks: dict, key: str, which: int, dt: int):
-    if dt == 0:
-        data = yf.Ticker(ticks[key][which]).history(period='1d', interval='15m')
-    if dt == 1:
-        data = yf.Ticker(ticks[key][which]).history(period='7d', interval='1h')
-    if dt == 2:
-        data = yf.Ticker(ticks[key][which]).history(start=(date.today()-timedelta(days=30)), auto_adjust=False)
-    two_cols = st.columns([1,1], vertical_alignment='center')
-    with two_cols[0]:
-        #st.write(ticks[key][which])
-        st.plotly_chart(small_graph(data['Close']), #config=config
-                        )
-        st.markdown('')
-    with two_cols[1]:
-        val = data['Close'].iloc[-1]
-        txtval = ''
-        if key=='EU':
-            txtval = f"{val:.2f}€"
-        elif key=='US':
-            txtval = f"{val:.2f}$"
-        elif key=='FX' and (which==0 or which==1):
-            txtval = f"{val:.2f} Kč"
-        else:
-            txtval = f"{val:.2f}$"
-        delt = 100 * (data['Close'].iloc[-1] / data['Close'].iloc[0] - 1)
-        st.metric(#label = ('Current Price' if language_on else "Aktuální cena"),
-                label = ticks[key][which],
-                value = txtval,
-                delta = f'{delt:.2f}%'
-                )
-        st.markdown('')
-
-@st.fragment
 def Partners():
-    st.divider()
+    #st.divider()
     st.header((":blue[Partneři]" if not language_on else ":blue[Partners]"))
     ibkr_path =  "assets/company_icons/Interactive_Brokers.svg"
     ibkrsrc = "https://upload.wikimedia.org/wikipedia/commons/c/ca/Interactive_Brokers_Logo_%282014%29.svg"
@@ -116,7 +60,7 @@ time_options = {
     3: "2023",
     4: "2024",
     5: "2025",
-    6: "all"
+    6: "All"
 }
 cz_c = {
      0: "Kumulativní",
@@ -126,11 +70,6 @@ eng_c = {
      0: "Cumulative",
      1: "Summation"
 }
-#few_stocks_times = {
-#    0: '1d',
-#    1: '1w',
-#    2: '1m',
-#}
 
 if "language" not in st.session_state:
     st.session_state["language"] = min(option_map.keys())
@@ -138,20 +77,19 @@ if "time_sel" not in st.session_state:
     st.session_state["time_sel"] = max(time_options.keys())
 if "cumul_sel" not in st.session_state:
     st.session_state["cumul_sel"] = max(cz_c.keys())
-#if "few_stocks" not in st.session_state:
-#   st.session_state["few_stocks"] = max(few_stocks_times.keys())
 
 coltop = st.columns([14, 2],)
 with coltop[0]:
     st.title(":blue[Market Center Concordia Equity Fund]")
 with coltop[1]:
     st.markdown(' ')
-    language_on = st.pills(label='Text language', 
+    language_on = st.pills(label=('Select language' if st.session_state["language"] else 'Vyberte jazyk'), 
                            options = option_map.keys(),
                            format_func = lambda option: option_map[option],
                            selection_mode='single',
                            key='language', 
-                           help="Change the language of the content Czech ⇄ English.")
+                           help=("Změna jazyka obsahu: Čeština ⇄ Angličtina." if not st.session_state["language"] else "Change the language of the content Czech ⇄ English."))
+
  
 motto_cz = ' *„Úspěch není o dokonalosti: Stačí se vyhnout velkým chybám a příznivé výsledky přirozeně následují."* '
 title_1_cz = 'O nás'
@@ -272,14 +210,9 @@ def Gen_Compare_Funds_Plots(df1, time, cumul):
                 ticksuffix="%",
                 autorange = True
                 ),
-            #plot_bgcolor="white",
-            #paper_bgcolor="white", 
-            #margin=dict(l=0, r=0, t=85, b=50),
-            #height=468,
         )
     return fig
 
-#colmotto = st.columns([5, 2],)
 colmotto = st.columns([7, 1],)
 with colmotto[0]:
     if not st.session_state['language']:
@@ -330,42 +263,10 @@ with coltext[0]:
                     )
 
     if not st.session_state['language']:
-        st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 1. května 2025</span>', unsafe_allow_html=True)
+        st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 5. května 2025</span>', unsafe_allow_html=True)
     else:
-        st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 05/01/2025</span>', unsafe_allow_html=True)
+        st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 05/05/2025</span>', unsafe_allow_html=True)
     with st.expander(label=("💬 Vysvětlení zkratek fondů" if not language_on else "💬 Explanation of Fund abbreviations")):
         st.markdown(funds_text)
     Partners()
     
-#with coltext[1]:
-#    st.html(
-#            '''
-#                <div class="divider-vertical-line"></div>
-#                <style>
-#                    .divider-vertical-line {
-#                        border-left: 2px solid rgba(49, 51, 63, 0.2);
-#                        height: 1500px;
-#                        margin: 15px;
-#                    }
-#                </style>
-#            ''',  
-#    )
-#with coltext[2]:
-#    few_stocks = st.segmented_control(
-#            ("📆 Časové rozlišení" if not language_on else "📆 Time Resolution" ),
-#            options=few_stocks_times.keys(),
-#            format_func = lambda option: few_stocks_times[option],
-#            selection_mode='single',
-#            key='few_stocks'
-#    )
-#    stocktabs= st.tabs(['EU Stocks', 'US Stocks', 'Forex'])
-#    with stocktabs[0]:
-#        for i in range(len(symbs['EU'])):
-#            tick_metric(ticks=symbs, key='EU', which=i, dt=few_stocks)
-#    with stocktabs[1]:
-#        for i in range(len(symbs['US'])):
-#            tick_metric(ticks=symbs, key='US', which=i, dt=few_stocks)
-#    with stocktabs[2]:
-#        for i in range(len(symbs['FX'])):
-#            tick_metric(ticks=symbs, key='FX', which=i, dt=few_stocks)
-#    Partners()
