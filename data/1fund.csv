@@ -1,10 +1,10 @@
 Introduction,Header,Name,Account,Alias,BaseCurrency,AccountType,AnalysisPeriod,PerformanceMeasure
-Introduction,Data,Stichting MC Concordia Equity Fund,"U7440979, U3440979",MCCEF,USD,,"February 27, 2020 to May 2, 2025 (Daily)",TWR
-Breakdown of Accounts,MetaInfo,Analysis Period,"February 27, 2020 - May 2, 2025"
+Introduction,Data,Stichting MC Concordia Equity Fund,"U7440979, U3440979",MCCEF,USD,,"February 27, 2020 to June 11, 2025 (Daily)",TWR
+Breakdown of Accounts,MetaInfo,Analysis Period,"February 27, 2020 - June 11, 2025"
 Breakdown of Accounts,Header,Account,Name,Beginning NAV,Ending NAV,Return,Deposits,Withdrawals,Dividends,Interest,Fees
 Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,0,41.407194902,1183256.4999148,-1366512.282522,2854.69,-246.633467,0
-Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,1437828.311633115,35.647507736,2248572.76077144,-1340242.2199148,90301.867119,102147.1035699,-80
-Time Period Benchmark Comparison,MetaInfo,Analysis Period,"February 27, 2020 - May 2, 2025"
+Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,1498142.275988821,42.766375331,2248572.76077144,-1355242.2199148,100708.496356,103460.0523879,-80
+Time Period Benchmark Comparison,MetaInfo,Analysis Period,"February 27, 2020 - June 11, 2025"
 Time Period Benchmark Comparison,Header,Date,BM1,BM1Return,Consolidated,ConsolidatedReturn
 Time Period Benchmark Comparison,Data,02/27/20,VT,-3.698416818,Consolidated,0
 Time Period Benchmark Comparison,Data,02/28/20,VT,-0.323406549,Consolidated,0
@@ -1357,6 +1357,34 @@ Time Period Benchmark Comparison,Data,04/29/25,VT,0.456385086,Consolidated,0.410
 Time Period Benchmark Comparison,Data,04/30/25,VT,-0.05143151,Consolidated,-0.112710717
 Time Period Benchmark Comparison,Data,05/01/25,VT,0.360205832,Consolidated,-0.232812375
 Time Period Benchmark Comparison,Data,05/02/25,VT,1.743291745,Consolidated,1.633819108
+Time Period Benchmark Comparison,Data,05/05/25,VT,-0.218377289,Consolidated,0.744653824
+Time Period Benchmark Comparison,Data,05/06/25,VT,-0.563973064,Consolidated,-0.067002251
+Time Period Benchmark Comparison,Data,05/07/25,VT,0.067722001,Consolidated,-0.990206616
+Time Period Benchmark Comparison,Data,05/08/25,VT,0.346840369,Consolidated,0.778680515
+Time Period Benchmark Comparison,Data,05/09/25,VT,0.143314787,Consolidated,0.233092213
+Time Period Benchmark Comparison,Data,05/12/25,VT,2.474955804,Consolidated,-1.06154713
+Time Period Benchmark Comparison,Data,05/13/25,VT,0.49289411,Consolidated,1.284810081
+Time Period Benchmark Comparison,Data,05/14/25,VT,0,Consolidated,-0.455527202
+Time Period Benchmark Comparison,Data,05/15/25,VT,0.564048067,Consolidated,0.974023943
+Time Period Benchmark Comparison,Data,05/16/25,VT,0.487725573,Consolidated,0.152222871
+Time Period Benchmark Comparison,Data,05/19/25,VT,0.275036402,Consolidated,0.864259595
+Time Period Benchmark Comparison,Data,05/20/25,VT,-0.10487254,Consolidated,0.766839021
+Time Period Benchmark Comparison,Data,05/21/25,VT,-1.251716062,Consolidated,0.367512623
+Time Period Benchmark Comparison,Data,05/22/25,VT,-0.07360157,Consolidated,-0.665823757
+Time Period Benchmark Comparison,Data,05/23/25,VT,-0.229151322,Consolidated,0.442193916
+Time Period Benchmark Comparison,Data,05/26/25,VT,0,Consolidated,0.834900967
+Time Period Benchmark Comparison,Data,05/27/25,VT,1.624148962,Consolidated,0.142229429
+Time Period Benchmark Comparison,Data,05/28/25,VT,-0.686092501,Consolidated,0.022418801
+Time Period Benchmark Comparison,Data,05/29/25,VT,0.406371912,Consolidated,0.671396124
+Time Period Benchmark Comparison,Data,05/30/25,VT,-0.137607253,Consolidated,-0.209464625
+Time Period Benchmark Comparison,Data,06/02/25,VT,0.664667261,Consolidated,1.118162914
+Time Period Benchmark Comparison,Data,06/03/25,VT,0.2576697,Consolidated,-0.141004961
+Time Period Benchmark Comparison,Data,06/04/25,VT,0.232913019,Consolidated,0.2448348
+Time Period Benchmark Comparison,Data,06/05/25,VT,-0.272435897,Consolidated,-0.116453526
+Time Period Benchmark Comparison,Data,06/06/25,VT,0.779366865,Consolidated,-0.819317342
+Time Period Benchmark Comparison,Data,06/09/25,VT,0.167424061,Consolidated,0.22856479
+Time Period Benchmark Comparison,Data,06/10/25,VT,0.477554919,Consolidated,-0.690425348
+Time Period Benchmark Comparison,Data,06/11/25,VT,-0.190114068,Consolidated,0.522304658
 Disclosure,"IMPORTANT NOTE: This portfolio analysis was generated using Interactive Brokers' PortfolioAnalyst tool, which allows Interactive Brokers clients to generate analyses of their accounts using market data provided by third parties along with trade and account data contained in Interactive Brokers' systems. This analysis is for information purposes only and is provided AS IS. Interactive Brokers makes no warranty of any kind, express or implied, as to this report analysis and its contents. The data provided for use in this Portfolio Analysis is believed to be accurate but completeness and accuracy of the information is not guaranteed, and Interactive Brokers has no liability with respect thereto. The data regarding accounts held outside of Interactive Brokers is obtained either directly from you or from the financial institutions holding those accounts through a third-party service provider and Interactive Brokers has not reviewed its accuracy.
 
 This material in this analysis is intended only as a reference and should not be relied upon for the maintenance of your books and records for tax, accounting, financial, or regulatory reporting or for any other purposes. This analysis is not an offer or a solicitation of an offer to buy or sell any security. This material does not and is not intended to take into account the particular financial conditions, investment objectives or requirements of individual customers. Before acting on this material, you should consider whether it is suitable for your particular circumstances and, as necessary, seek professional advice."

@@ -1,10 +1,10 @@
 Introduction,Header,Name,Account,Alias,BaseCurrency,AccountType,AnalysisPeriod,PerformanceMeasure
-Introduction,Data,Stichting MC Concordia Equity Fund,"U7440979, U3440979",MCCEF,USD,,"February 27, 2020 to May 2, 2025 (Daily)",TWR
-Breakdown of Accounts,MetaInfo,Analysis Period,"February 27, 2020 - May 2, 2025"
+Introduction,Data,Stichting MC Concordia Equity Fund,"U7440979, U3440979",MCCEF,USD,,"February 27, 2020 to June 11, 2025 (Daily)",TWR
+Breakdown of Accounts,MetaInfo,Analysis Period,"February 27, 2020 - June 11, 2025"
 Breakdown of Accounts,Header,Account,Name,Beginning NAV,Ending NAV,Return,Deposits,Withdrawals,Dividends,Interest,Fees
 Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,0,41.407194902,1183256.4999148,-1366512.282522,2854.69,-246.633467,0
-Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,1437828.311633115,35.647507736,2248572.76077144,-1340242.2199148,90301.867119,102147.1035699,-80
-Time Period Benchmark Comparison,MetaInfo,Analysis Period,"February 27, 2020 - May 2, 2025"
+Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,1498142.275988821,42.766375331,2248572.76077144,-1355242.2199148,100708.496356,103460.0523879,-80
+Time Period Benchmark Comparison,MetaInfo,Analysis Period,"February 27, 2020 - June 11, 2025"
 Time Period Benchmark Comparison,Header,Date,BM1,BM1Return,BM2,BM2Return,BM3,BM3Return,Consolidated,ConsolidatedReturn
 Time Period Benchmark Comparison,Data,02/27/20,INDU,-4.400252396,SPX,-4.416327867,RUT,-3.518444049,Consolidated,0
 Time Period Benchmark Comparison,Data,02/28/20,INDU,-1.314335125,SPX,-0.823832736,RUT,-1.414127595,Consolidated,0
@@ -1357,6 +1357,34 @@ Time Period Benchmark Comparison,Data,04/29/25,INDU,0.745831406,SPX,0.580239656,
 Time Period Benchmark Comparison,Data,04/30/25,INDU,0.349736797,SPX,0.147999489,RUT,-0.614950752,Consolidated,-0.112710717
 Time Period Benchmark Comparison,Data,05/01/25,INDU,0.205560156,SPX,0.629908818,RUT,0.598578803,Consolidated,-0.232812375
 Time Period Benchmark Comparison,Data,05/02/25,INDU,1.385101843,SPX,1.472661283,RUT,2.272895439,Consolidated,1.633819108
+Time Period Benchmark Comparison,Data,05/05/25,INDU,-0.238640206,SPX,-0.638159063,RUT,-0.806635991,Consolidated,0.744653824
+Time Period Benchmark Comparison,Data,05/06/25,INDU,-0.945757073,SPX,-0.769328789,RUT,-1.049164754,Consolidated,-0.067002251
+Time Period Benchmark Comparison,Data,05/07/25,INDU,0.697959783,SPX,0.434642254,RUT,0.328713329,Consolidated,-0.990206616
+Time Period Benchmark Comparison,Data,05/08/25,INDU,0.618962362,SPX,0.579974713,RUT,1.852225078,Consolidated,0.778680515
+Time Period Benchmark Comparison,Data,05/09/25,INDU,-0.259376409,SPX,-0.071151884,RUT,-0.157114905,Consolidated,0.233092213
+Time Period Benchmark Comparison,Data,05/12/25,INDU,2.817782958,SPX,3.255882161,RUT,3.4252232,Consolidated,-1.06154713
+Time Period Benchmark Comparison,Data,05/13/25,INDU,-0.627310476,SPX,0.72482243,RUT,0.488596671,Consolidated,1.284810081
+Time Period Benchmark Comparison,Data,05/14/25,INDU,-0.212076621,SPX,0.102436911,RUT,-0.877918404,Consolidated,-0.455527202
+Time Period Benchmark Comparison,Data,05/15/25,INDU,0.658228354,SPX,0.413231556,RUT,0.539743661,Consolidated,0.974023943
+Time Period Benchmark Comparison,Data,05/16/25,INDU,0.846873136,SPX,0.700532202,RUT,0.903764895,Consolidated,0.152222871
+Time Period Benchmark Comparison,Data,05/19/25,INDU,0.346596885,SPX,0.087607705,RUT,-0.41015893,Consolidated,0.864259595
+Time Period Benchmark Comparison,Data,05/20/25,INDU,-0.268344111,SPX,-0.388020659,RUT,0.058034607,Consolidated,0.766839021
+Time Period Benchmark Comparison,Data,05/21/25,INDU,-1.913900711,SPX,-1.613511412,RUT,-2.800578843,Consolidated,0.367512623
+Time Period Benchmark Comparison,Data,05/22/25,INDU,-0.003225002,SPX,-0.044485432,RUT,-0.045105045,Consolidated,-0.665823757
+Time Period Benchmark Comparison,Data,05/23/25,INDU,-0.600904129,SPX,-0.670830759,RUT,-0.2709523,Consolidated,0.442193916
+Time Period Benchmark Comparison,Data,05/26/25,INDU,0,SPX,0,RUT,0,Consolidated,0.834900967
+Time Period Benchmark Comparison,Data,05/27/25,INDU,1.799316733,SPX,2.04590182,RUT,2.479788965,Consolidated,0.142229429
+Time Period Benchmark Comparison,Data,05/28/25,INDU,-0.578481071,SPX,-0.557118587,RUT,-1.080506123,Consolidated,0.022418801
+Time Period Benchmark Comparison,Data,05/29/25,INDU,0.277989582,SPX,0.401117423,RUT,0.341043786,Consolidated,0.671396124
+Time Period Benchmark Comparison,Data,05/30/25,INDU,0.172400193,SPX,-0.008118846,RUT,-0.388576513,Consolidated,-0.209464625
+Time Period Benchmark Comparison,Data,06/02/25,INDU,0.11532983,SPX,0.410204189,RUT,0.199241441,Consolidated,1.118162914
+Time Period Benchmark Comparison,Data,06/03/25,INDU,0.506222834,SPX,0.580026078,RUT,1.590279804,Consolidated,-0.141004961
+Time Period Benchmark Comparison,Data,06/04/25,INDU,-0.216135414,SPX,0.007369728,RUT,-0.213225892,Consolidated,0.2448348
+Time Period Benchmark Comparison,Data,06/05/25,INDU,-0.22122319,SPX,-0.527734093,RUT,-0.045871254,Consolidated,-0.116453526
+Time Period Benchmark Comparison,Data,06/06/25,INDU,1.047100006,SPX,1.028067281,RUT,1.679315938,Consolidated,-0.819317342
+Time Period Benchmark Comparison,Data,06/09/25,INDU,-0.00259571,SPX,0.09199448,RUT,0.57333883,Consolidated,0.22856479
+Time Period Benchmark Comparison,Data,06/10/25,INDU,0.261616921,SPX,0.548296003,RUT,0.563744143,Consolidated,-0.690425348
+Time Period Benchmark Comparison,Data,06/11/25,INDU,-0.002422617,SPX,-0.274391809,RUT,-0.376895456,Consolidated,0.522304658
 Disclosure,"IMPORTANT NOTE: This portfolio analysis was generated using Interactive Brokers' PortfolioAnalyst tool, which allows Interactive Brokers clients to generate analyses of their accounts using market data provided by third parties along with trade and account data contained in Interactive Brokers' systems. This analysis is for information purposes only and is provided AS IS. Interactive Brokers makes no warranty of any kind, express or implied, as to this report analysis and its contents. The data provided for use in this Portfolio Analysis is believed to be accurate but completeness and accuracy of the information is not guaranteed, and Interactive Brokers has no liability with respect thereto. The data regarding accounts held outside of Interactive Brokers is obtained either directly from you or from the financial institutions holding those accounts through a third-party service provider and Interactive Brokers has not reviewed its accuracy.
 
 This material in this analysis is intended only as a reference and should not be relied upon for the maintenance of your books and records for tax, accounting, financial, or regulatory reporting or for any other purposes. This analysis is not an offer or a solicitation of an offer to buy or sell any security. This material does not and is not intended to take into account the particular financial conditions, investment objectives or requirements of individual customers. Before acting on this material, you should consider whether it is suitable for your particular circumstances and, as necessary, seek professional advice."

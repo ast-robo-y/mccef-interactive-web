@@ -226,9 +226,9 @@ with st.container(border=True, #height=500
                       ):
     st.plotly_chart(plot_candlestick(ohlc, trades, sel_ticker, time=sel_date))
 if not st.session_state['language2']:
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 5. května 2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 12. června 2025</span>', unsafe_allow_html=True)
 else:
-    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 05/05/2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 06/12/2025</span>', unsafe_allow_html=True)
 st.divider()
 
 st.header('Actual Positions Portfolio' if language_on else 'Portfolio aktuálních pozic')
@@ -240,7 +240,7 @@ with st.container(border=True, #height=500
                       ):
     st.plotly_chart(Treemap_fig(portfolio, 'balance'))
 if not st.session_state['language2']:
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 5. května 2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 12. června 2025</span>', unsafe_allow_html=True)
 else:
-    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 05/05/2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 06/12/2025</span>', unsafe_allow_html=True)
 
