@@ -155,7 +155,7 @@ link_2 = 'data/3funds.csv'
 df = load_data(link_1, link_2)
 
 link_positions = 'data/Positions.csv'
-symbs = Portfolio_tickers(link_positions)
+#symbs = Portfolio_tickers(link_positions)
 
 #@st.fragment
 def Gen_Compare_Funds_Plots(df1, time, cumul):
@@ -185,27 +185,27 @@ def Gen_Compare_Funds_Plots(df1, time, cumul):
         fig.update_layout(
             xaxis=dict(
                 title=("Date" if language_on else "Období"),
-                title_font=dict(size=16, family="Source Sans Pro Bold", 
+                title_font=dict(size=16, #family="Source Sans Pro Bold", 
                                 ),
                 showgrid=True,
                 gridcolor="rgba(200, 200, 200, 0.3)", 
                 zeroline=False,
                 showline=True,
                 linewidth=1,
-                tickfont=dict(size=12, family="Source Sans Pro",
+                tickfont=dict(size=12, #family="Source Sans Pro",
                               ),
                 rangeslider = dict(visible=False)
                 ),
             yaxis=dict(
                 title=("Return" if language_on else "Návratnost"),
-                title_font=dict(size=16, family="Source Sans Pro Bold",
+                title_font=dict(size=16, #family="Source Sans Pro Bold",
                                 ),
                 showgrid=True,
                 gridcolor="rgba(200, 200, 200, 0.3)",
                 zeroline=False,
                 showline=True,
                 linewidth=1,
-                tickfont=dict(size=12, family="Source Sans Pro",
+                tickfont=dict(size=12, #family="Source Sans Pro",
                               ),
                 ticksuffix="%",
                 autorange = True
@@ -263,9 +263,9 @@ with coltext[0]:
                     )
 
     if not st.session_state['language']:
-        st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 12. června 2025</span>', unsafe_allow_html=True)
+        st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 22. července 2025</span>', unsafe_allow_html=True)
     else:
-        st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 06/12/2025</span>', unsafe_allow_html=True)
+        st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 07/22/2025</span>', unsafe_allow_html=True)
     with st.expander(label=("💬 Vysvětlení zkratek fondů" if not language_on else "💬 Explanation of Fund abbreviations")):
         st.markdown(funds_text)
     Partners()

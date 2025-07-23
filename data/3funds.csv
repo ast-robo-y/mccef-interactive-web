@@ -1,10 +1,3 @@
-Introduction,Header,Name,Account,Alias,BaseCurrency,AccountType,AnalysisPeriod,PerformanceMeasure
-Introduction,Data,Stichting MC Concordia Equity Fund,"U7440979, U3440979",MCCEF,USD,,"February 27, 2020 to June 11, 2025 (Daily)",TWR
-Breakdown of Accounts,MetaInfo,Analysis Period,"February 27, 2020 - June 11, 2025"
-Breakdown of Accounts,Header,Account,Name,Beginning NAV,Ending NAV,Return,Deposits,Withdrawals,Dividends,Interest,Fees
-Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,0,41.407194902,1183256.4999148,-1366512.282522,2854.69,-246.633467,0
-Breakdown of Accounts,Data,MCCEF,Stichting MC Concordia Equity Fund,0,1498142.275988821,42.766375331,2248572.76077144,-1355242.2199148,100708.496356,103460.0523879,-80
-Time Period Benchmark Comparison,MetaInfo,Analysis Period,"February 27, 2020 - June 11, 2025"
 Time Period Benchmark Comparison,Header,Date,BM1,BM1Return,BM2,BM2Return,BM3,BM3Return,Consolidated,ConsolidatedReturn
 Time Period Benchmark Comparison,Data,02/27/20,INDU,-4.400252396,SPX,-4.416327867,RUT,-3.518444049,Consolidated,0
 Time Period Benchmark Comparison,Data,02/28/20,INDU,-1.314335125,SPX,-0.823832736,RUT,-1.414127595,Consolidated,0
@@ -1385,6 +1378,32 @@ Time Period Benchmark Comparison,Data,06/06/25,INDU,1.047100006,SPX,1.028067281,
 Time Period Benchmark Comparison,Data,06/09/25,INDU,-0.00259571,SPX,0.09199448,RUT,0.57333883,Consolidated,0.22856479
 Time Period Benchmark Comparison,Data,06/10/25,INDU,0.261616921,SPX,0.548296003,RUT,0.563744143,Consolidated,-0.690425348
 Time Period Benchmark Comparison,Data,06/11/25,INDU,-0.002422617,SPX,-0.274391809,RUT,-0.376895456,Consolidated,0.522304658
-Disclosure,"IMPORTANT NOTE: This portfolio analysis was generated using Interactive Brokers' PortfolioAnalyst tool, which allows Interactive Brokers clients to generate analyses of their accounts using market data provided by third parties along with trade and account data contained in Interactive Brokers' systems. This analysis is for information purposes only and is provided AS IS. Interactive Brokers makes no warranty of any kind, express or implied, as to this report analysis and its contents. The data provided for use in this Portfolio Analysis is believed to be accurate but completeness and accuracy of the information is not guaranteed, and Interactive Brokers has no liability with respect thereto. The data regarding accounts held outside of Interactive Brokers is obtained either directly from you or from the financial institutions holding those accounts through a third-party service provider and Interactive Brokers has not reviewed its accuracy.
-
-This material in this analysis is intended only as a reference and should not be relied upon for the maintenance of your books and records for tax, accounting, financial, or regulatory reporting or for any other purposes. This analysis is not an offer or a solicitation of an offer to buy or sell any security. This material does not and is not intended to take into account the particular financial conditions, investment objectives or requirements of individual customers. Before acting on this material, you should consider whether it is suitable for your particular circumstances and, as necessary, seek professional advice."
+Time Period Benchmark Comparison,Data,06/12/25,INDU,0.237602171,SPX,0.382249794,RUT,-0.372208229,Consolidated,0.63037224
+Time Period Benchmark Comparison,Data,06/13/25,INDU,-1.784355289,SPX,-1.129645375,RUT,-1.829503751,Consolidated,-0.841106868
+Time Period Benchmark Comparison,Data,06/16/25,INDU,0.795918459,SPX,0.939271905,RUT,1.136245808,Consolidated,0.454382075
+Time Period Benchmark Comparison,Data,06/17/25,INDU,-0.703961817,SPX,-0.835224287,RUT,-1.040201457,Consolidated,-0.864514407
+Time Period Benchmark Comparison,Data,06/18/25,INDU,-0.098501035,SPX,-0.03092239,RUT,0.526051875,Consolidated,0.034117286
+Time Period Benchmark Comparison,Data,06/19/25,INDU,0,SPX,0,RUT,0,Consolidated,-0.001001517
+Time Period Benchmark Comparison,Data,06/20/25,INDU,0.083373526,SPX,-0.217861281,RUT,-0.171517357,Consolidated,1.429093296
+Time Period Benchmark Comparison,Data,06/23/25,INDU,0.888387232,SPX,0.960649079,RUT,1.113547977,Consolidated,0.325549603
+Time Period Benchmark Comparison,Data,06/24/25,INDU,1.198430408,SPX,1.112167789,RUT,1.339818745,Consolidated,0.639277411
+Time Period Benchmark Comparison,Data,06/25/25,INDU,-0.247371604,SPX,-0.00032829,RUT,-1.15720716,Consolidated,0.592448477
+Time Period Benchmark Comparison,Data,06/26/25,INDU,0.940872817,SPX,0.802014392,RUT,1.682686659,Consolidated,0.754924136
+Time Period Benchmark Comparison,Data,06/27/25,INDU,0.996684709,SPX,0.521900271,RUT,0.026692964,Consolidated,0.335987934
+Time Period Benchmark Comparison,Data,06/30/25,INDU,0.628718826,SPX,0.516436716,RUT,0.164877198,Consolidated,0.875222389
+Time Period Benchmark Comparison,Data,07/01/25,INDU,0.907522593,SPX,-0.111846187,RUT,1.038530414,Consolidated,-0.9040067
+Time Period Benchmark Comparison,Data,07/02/25,INDU,-0.023643138,SPX,0.47450714,RUT,1.315366872,Consolidated,0.498377786
+Time Period Benchmark Comparison,Data,07/03/25,INDU,0.809901534,SPX,0.833892688,RUT,1.022176388,Consolidated,-0.161308396
+Time Period Benchmark Comparison,Data,07/04/25,INDU,0,SPX,0,RUT,0,Consolidated,0.406154623
+Time Period Benchmark Comparison,Data,07/07/25,INDU,-0.941744019,SPX,-0.786227874,RUT,-1.544928583,Consolidated,-0.059113817
+Time Period Benchmark Comparison,Data,07/08/25,INDU,-0.372919555,SPX,-0.071589315,RUT,0.658631955,Consolidated,0.806818244
+Time Period Benchmark Comparison,Data,07/09/25,INDU,0.491718497,SPX,0.606214421,RUT,1.068918823,Consolidated,0.716745287
+Time Period Benchmark Comparison,Data,07/10/25,INDU,0.441998457,SPX,0.274617372,RUT,0.486519363,Consolidated,-0.013033436
+Time Period Benchmark Comparison,Data,07/11/25,INDU,-0.625142215,SPX,-0.329752916,RUT,-1.257615721,Consolidated,-0.510236341
+Time Period Benchmark Comparison,Data,07/14/25,INDU,0.198640975,SPX,0.140740445,RUT,0.667568452,Consolidated,-0.081340219
+Time Period Benchmark Comparison,Data,07/15/25,INDU,-0.981474213,SPX,-0.395625152,RUT,-1.982025391,Consolidated,-0.774187551
+Time Period Benchmark Comparison,Data,07/16/25,INDU,0.525835302,SPX,0.319358848,RUT,0.995037307,Consolidated,-0.01815592
+Time Period Benchmark Comparison,Data,07/17/25,INDU,0.519062574,SPX,0.537382059,RUT,1.200466101,Consolidated,0.128705724
+Time Period Benchmark Comparison,Data,07/18/25,INDU,-0.305283932,SPX,-0.009051412,RUT,-0.603674611,Consolidated,0.292399346
+Time Period Benchmark Comparison,Data,07/21/25,INDU,-0.022186545,SPX,0.139912559,RUT,-0.394825012,Consolidated,0.590930394
+Time Period Benchmark Comparison,Data,07/22/25,INDU,0.404687672,SPX,0.063752855,RUT,0.79000221,Consolidated,0.26717107

@@ -1,35 +1,40 @@
 labels,parents,values,names,color,currency
-8TRA.DE,Industrials,9.826609017,Traton SE,9.826609017,EUR
-AAPL,Technology,1.399040306,Apple Inc.,1.399040306,USD
-AMD,Technology,1.618978892,"Advanced Micro Devices, Inc.",1.618978892,USD
-BAC,Financial Services,0.864873105,Bank of America Corporation,0.864873105,USD
-BARC.L,Financial Services,2.985631324,Barclays PLC,2.985631324,GBp
-BRK-B,Financial Services,3.516576015,Berkshire Hathaway Inc.,3.516576015,USD
-CAT,Industrials,0.7657668,Caterpillar Inc.,0.7657668,USD
-CSCO,Technology,1.359666371,"Cisco Systems, Inc.",1.359666371,USD
-CSX,Industrials,0.102259736,CSX Corporation,0.102259736,USD
-DBK.DE,Financial Services,6.359999054,Deutsche Bank Aktiengesellschaft,6.359999054,EUR
-DDD,Technology,0.122902928,3D Systems Corporation,0.122902928,USD
-ETL.PA,Technology,4.536615472,Eutelsat Communications S.A.,4.536615472,EUR
-GOOG,Communication Services,0.971732912,Alphabet Inc.,0.971732912,USD
-GS,Financial Services,3.078549594,"The Goldman Sachs Group, Inc.",3.078549594,USD
-HAG.F,Industrials,5.242198333,Hensoldt AG,5.242198333,EUR
-HPQ,Technology,6.31111104,HP Inc.,6.31111104,USD
-IBKR,Financial Services,0.359382082,"Interactive Brokers Group, Inc.",0.359382082,USD
-JNJ,Healthcare,2.455087931,Johnson & Johnson,2.455087931,USD
-JPM,Financial Services,0.330027407,JPMorgan Chase & Co.,0.330027407,USD
-MA,Financial Services,2.179347514,Mastercard Incorporated,2.179347514,USD
-MS,Financial Services,0.231321872,Morgan Stanley,0.231321872,USD
-MSFT,Technology,0.083186228,Microsoft Corporation,0.083186228,USD
-MTX,Basic Materials,7.987227665,Minerals Technologies Inc.,7.987227665,USD
-NVDA,Technology,2.72507536,NVIDIA Corporation,2.72507536,USD
-PYPL,Financial Services,0.209384965,"PayPal Holdings, Inc.",0.209384965,USD
-R3NK.DE,Industrials,8.038262613,RENK Group AG,8.038262613,EUR
-RHM.DE,Industrials,5.710978434,Rheinmetall AG,5.710978434,EUR
-SAP.DE,Technology,3.413243163,SAP SE,3.413243163,EUR
-SNDK,Technology,0.07830843,Sandisk Corporation,0.07830843,USD
-SONY,Technology,0.17353359,Sony Group Corporation,0.17353359,USD
-TTR1.DE,Industrials,2.945135056,Technotrans SE,2.945135056,EUR
-V,Financial Services,2.694780456,Visa Inc.,2.694780456,USD
-VOW3.DE,Consumer Cyclical,10.68795007,Volkswagen AG,10.68795007,EUR
-WDC,Technology,0.635256265,Western Digital Corporation,0.635256265,USD
+8TRA.DE,Industrials,9.388416567,Traton SE,9.388416567,EUR
+AAPL,Technology,2.265390057,Apple Inc.,2.265390057,USD
+ADBE,Technology,1.933103159,Adobe Inc.,1.933103159,USD
+AMD,Technology,0.852541108,"Advanced Micro Devices, Inc.",0.852541108,USD
+BAC,Financial Services,2.205379244,Bank of America Corporation,2.205379244,USD
+BARC.L,Financial Services,3.028333615,Barclays PLC,3.028333615,GBp
+BRK-B,Financial Services,2.918006727,Berkshire Hathaway Inc.,2.918006727,USD
+CAT,Industrials,0.684954686,Caterpillar Inc.,0.684954686,USD
+CSCO,Technology,1.21334229,"Cisco Systems, Inc.",1.21334229,USD
+CSX,Industrials,0.094267363,CSX Corporation,0.094267363,USD
+DB,Financial Services,1.618826765,Deutsche Bank Aktiengesellschaft,1.618826765,USD
+DBK.DE,Financial Services,4.418101356,Deutsche Bank Aktiengesellschaft,4.418101356,EUR
+DDD,Technology,0.108652654,3D Systems Corporation,0.108652654,USD
+ETL.PA,Technology,5.22606258,Eutelsat Communications S.A.,5.22606258,EUR
+GOOG,Communication Services,0.513763793,Alphabet Inc.,0.513763793,USD
+GS,Financial Services,0.311780079,"The Goldman Sachs Group, Inc.",0.311780079,USD
+HAG.F,Industrials,5.185202278,Hensoldt AG,5.185202278,EUR
+HPQ,Technology,9.448825309,HP Inc.,9.448825309,USD
+IBKR,Financial Services,0.371617558,"Interactive Brokers Group, Inc.",0.371617558,USD
+JNJ,Healthcare,1.867902678,Johnson & Johnson,1.867902678,USD
+JPM,Financial Services,0.520181618,JPMorgan Chase & Co.,0.520181618,USD
+MA,Financial Services,1.741301744,Mastercard Incorporated,1.741301744,USD
+MOS,Basic Materials,0.53926324,The Mosaic Company,0.53926324,USD
+MS,Financial Services,0.207823756,Morgan Stanley,0.207823756,USD
+MSFT,Technology,0.450972218,Microsoft Corporation,0.450972218,USD
+MTX,Basic Materials,8.734944187,Minerals Technologies Inc.,8.734944187,USD
+NVDA,Technology,1.671736786,NVIDIA Corporation,1.671736786,USD
+PYPL,Financial Services,0.182685793,"PayPal Holdings, Inc.",0.182685793,USD
+R3NK.DE,Industrials,7.155819196,RENK Group AG,7.155819196,EUR
+RHM.DE,Industrials,7.062052134,Rheinmetall AG,7.062052134,EUR
+SAF.PA,Industrials,0.124400918,Safran SA,0.124400918,EUR
+SAP.DE,Technology,2.769365185,SAP SE,2.769365185,EUR
+SNDK,Technology,0.067467165,Sandisk Corporation,0.067467165,USD
+SONY,Technology,0.140854373,Sony Group Corporation,0.140854373,USD
+TTR1.DE,Industrials,2.382239808,technotrans SE,2.382239808,EUR
+V,Financial Services,2.352684035,Visa Inc.,2.352684035,USD
+VOW3.DE,Consumer Cyclical,7.504695549,Volkswagen AG,7.504695549,EUR
+WCH.DE,Basic Materials,2.091274698,Wacker Chemie AG,2.091274698,EUR
+WDC,Technology,0.64576773,Western Digital Corporation,0.64576773,USD

@@ -30,8 +30,8 @@ def Read_pd_csv_Pos(link: str, skiprows: int = 0, do_date_parse: bool = True):
                            )
 
 def BM_Comparison_Daily(link_1BM: str, link_3BM: str, ) -> dict:
-    df_1 = Read_pd_csv_BM(link_1BM, skiprows=7,)
-    df_2 = Read_pd_csv_BM(link_3BM, skiprows=7,)
+    df_1 = Read_pd_csv_BM(link_1BM, skiprows=0,)
+    df_2 = Read_pd_csv_BM(link_3BM, skiprows=0,)
     if len(df_1.columns.values)==7 and len(df_2.columns.values)==11:
         pass
     else:
