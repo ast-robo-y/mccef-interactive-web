@@ -263,9 +263,9 @@ with coltext[0]:
                     )
 
     if not st.session_state['language']:
-        st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 31. července 2025</span>', unsafe_allow_html=True)
+        st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 15. srpna 2025</span>', unsafe_allow_html=True)
     else:
-        st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 07/31/2025</span>', unsafe_allow_html=True)
+        st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 08/15/2025</span>', unsafe_allow_html=True)
     with st.expander(label=("💬 Vysvětlení zkratek fondů" if not language_on else "💬 Explanation of Fund abbreviations")):
         st.markdown(funds_text)
     Partners()
