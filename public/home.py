@@ -31,7 +31,7 @@ def Partners():
         """
         <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
             <a href="https://www2.deloitte.com/cz/cs.html">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Deloitte.svg/1280px-Deloitte.svg.png" width="250" height="50" style="border-radius:0px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_of_Deloitte.svg" width="250" height="50" style="border-radius:0px;">
             </a>
         </div>
         """,
@@ -263,9 +263,9 @@ with coltext[0]:
                     )
 
     if not st.session_state['language']:
-        st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 15. srpna 2025</span>', unsafe_allow_html=True)
+        st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 12. září 2025</span>', unsafe_allow_html=True)
     else:
-        st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 08/15/2025</span>', unsafe_allow_html=True)
+        st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 09/12/2025</span>', unsafe_allow_html=True)
     with st.expander(label=("💬 Vysvětlení zkratek fondů" if not language_on else "💬 Explanation of Fund abbreviations")):
         st.markdown(funds_text)
     Partners()

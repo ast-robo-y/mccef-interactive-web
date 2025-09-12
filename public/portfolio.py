@@ -26,6 +26,8 @@ uniq_ticks = np.unique(portfolio['labels'])
 def tick_OHLC_GEN(tick):
     stock = yf.Ticker(tick)
     ohlc = stock.history(start='2021-01-15', auto_adjust=False)
+    if tick == "BARC.L":
+        ohlc = ohlc / 100
     return ohlc
 
 @st.fragment
@@ -38,6 +40,9 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
     df_trades = df_trades.reindex(df.index, method="ffill").fillna(0)
 
     currency = portfolio[portfolio['labels']==tick]['currency'].values[0]
+
+    if currency == 'GBp':
+        currency = 'GBP'
 
     df['1wma'] = df['Close'].rolling(window=7).mean()
     df['1mma'] = df['Close'].rolling(window=30).mean()
@@ -235,9 +240,9 @@ with st.container(border=True, #height=500
                       ):
     st.plotly_chart(plot_candlestick(ohlc, trades, portfolio=portfolio, tick = sel_ticker, time=sel_date))
 if not st.session_state['language2']:
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 15. srpna 2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 12. září 2025</span>', unsafe_allow_html=True)
 else:
-    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 08/15/2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 09/12/2025</span>', unsafe_allow_html=True)
 st.divider()
 
 st.header('Actual Positions Portfolio' if language_on else 'Portfolio aktuálních pozic')
@@ -247,9 +252,9 @@ def Treemap_fig(df, colors):
     return My_Treemap(df, colors)
 with st.container(border=True, #height=500
                       ):
-    st.plotly_chart(Treemap_fig(portfolio, 'balance'))
+    st.plotly_chart(Treemap_fig(portfolio, 'RdYlGn')) #balance
 if not st.session_state['language2']:
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 15. srpna 2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 12. září 2025</span>', unsafe_allow_html=True)
 else:
-    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 08/15/2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 09/12/2025</span>', unsafe_allow_html=True)
 
