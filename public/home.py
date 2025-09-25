@@ -9,7 +9,7 @@ from MCCEFfuncs import *
 @st.fragment
 def Partners():
     #st.divider()
-    st.header((":blue[Partneři]" if not language_on else ":blue[Partners]"))
+    st.header(":blue[Partneři]")
     ibkr_path =  "assets/company_icons/Interactive_Brokers.svg"
     ibkrsrc = "https://upload.wikimedia.org/wikipedia/commons/c/ca/Interactive_Brokers_Logo_%282014%29.svg"
     deloitte = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Deloitte.svg/1280px-Deloitte.svg.png"
@@ -24,7 +24,7 @@ def Partners():
             </a>
         </div>
         """,
-        unsafe_allow_html=True, help=("Obchodní platforma" if not language_on else "Trading Platform")
+        unsafe_allow_html=True, help="Obchodní platforma"
         )
     with colpar[1]:
         st.markdown(
@@ -35,7 +35,7 @@ def Partners():
             </a>
         </div>
         """,
-        unsafe_allow_html=True, help=("Revizor účtů" if not language_on else "Auditor")
+        unsafe_allow_html=True, help="Revizor účtů"
         )
     with colpar[2]:
         st.markdown(
@@ -46,13 +46,9 @@ def Partners():
             </a>
         </div>
         """,
-        unsafe_allow_html=True, help=("Investiční manažer" if not language_on else "Investment Manager")
+        unsafe_allow_html=True, help=("Investiční manažer")
         )
 
-option_map = {
-    0: 'CZ',
-    1: 'ENG',
-}
 time_options = {
     0: "2020",
     1: "2021",
@@ -66,29 +62,15 @@ cz_c = {
      0: "Kumulativní",
      1: "Sčítací"
 }
-eng_c = {
-     0: "Cumulative",
-     1: "Summation"
-}
 
-if "language" not in st.session_state:
-    st.session_state["language"] = min(option_map.keys())
+
 if "time_sel" not in st.session_state:
     st.session_state["time_sel"] = max(time_options.keys())
 if "cumul_sel" not in st.session_state:
     st.session_state["cumul_sel"] = max(cz_c.keys())
 
-coltop = st.columns([14, 2],)
-with coltop[0]:
-    st.title(":blue[Market Center Concordia Equity Fund]")
-with coltop[1]:
-    st.markdown(' ')
-    language_on = st.pills(label=('Select language' if st.session_state["language"] else 'Vyberte jazyk'), 
-                           options = option_map.keys(),
-                           format_func = lambda option: option_map[option],
-                           selection_mode='single',
-                           key='language', 
-                           help=("Změna jazyka obsahu: Čeština ⇄ Angličtina." if not st.session_state["language"] else "Change the language of the content Czech ⇄ English."))
+
+st.title(":blue[Market Center Concordia Equity Fund]")
 
  
 motto_cz = ' *„Úspěch není o dokonalosti: Stačí se vyhnout velkým chybám a příznivé výsledky přirozeně následují."* '
@@ -104,29 +86,10 @@ text_2_cz = '''Tým vedený matematickým stratégem a technickými analytiky se
                spíše než honit se za krátkodobými zisky.'''
 text_3_cz = '''Další informace můžete najít na stránce [mcviva.com](https://www.mcviva.com/).'''
 
-motto_eng = ' *"Success is not about perfection: Just avoid big mistakes and favorable results will naturally follow."* '
-title_1_eng = 'About'
-text_1_eng = '''The MC Concordia Equity Fund is administrated by Richfox Capital, a long-standing partner based in Switzerland.
-                 It is audited by Deloitte and overseen by the Dutch central bank, offering clients reassurance about its management and security.
-                 The fund's investment strategy is primarily mathematical, utilizing a proprietary model developed over 15 years to value selected companies. 
-                 This approach has earned accolades, including recognition from Bloomberg as one of the top three funds globally in its category.'''
-text_2_eng = '''The team, led by mathematical strategist and technical analysts focuses on long-term asset management with holdings often exceeding 10 years.
-                The fund emphasizes risk management, using advanced systems to determine safe trading volumes and minimize risk. 
-                Their strategy, developed in collaboration with Interactive Brokers since 2007, has navigated through financial crises, 
-                demonstrating resilience and profitability. The fund's goal is consistent, rational analysis, focusing on risk reduction 
-                rather than chasing short-term gains.'''
-text_3_eng = '''You can find more information about us on the website [mcviva.com](https://www.mcviva.com/).'''
-
 cumul_text_cz = (
     "📌 **Kumulativní metoda**: založena na složeném úročení.\n\n"
     "$$1+R_{\\mathrm{c}} = \\prod_{i}(1+R_{\\mathrm{d}, i})$$\n\n"
     "📌 **Sčítací metoda**: jednoduše sčítá denní návratnosti.\n\n"
-    "$$R_{\\mathrm{s}} = \\sum_{i}R_{\\mathrm{d}, i}$$"
-)
-cumul_text_eng = (
-    "📌 **Cumulative Method**: Based on compound interest.\n\n"
-    "$$1+R_{\\mathrm{c}} = \\prod_{i}(1+R_{\\mathrm{d}, i})$$\n\n"
-    "📌 **Summation Method**: Simply sums up daily returns.\n\n"
     "$$R_{\\mathrm{s}} = \\sum_{i}R_{\\mathrm{d}, i}$$"
 )
 funds_text = """
@@ -137,7 +100,7 @@ funds_text = """
 - **VT: Vanguard Total World Stock**
 """
 
-cumul_help_text = cumul_text_eng if language_on else cumul_text_cz
+cumul_help_text = cumul_text_cz
 
 @st.cache_data
 def load_data(l1: str, l2: str):
@@ -155,9 +118,7 @@ link_2 = 'data/3funds.csv'
 df = load_data(link_1, link_2)
 
 link_positions = 'data/Positions.csv'
-#symbs = Portfolio_tickers(link_positions)
 
-#@st.fragment
 def Gen_Compare_Funds_Plots(df1, time, cumul):
     is_cumulative = cumul == 0
     df1 = Make_Growth_or_Cumulative_Return(df1, Cumulative=is_cumulative)
@@ -184,29 +145,25 @@ def Gen_Compare_Funds_Plots(df1, time, cumul):
         )
         fig.update_layout(
             xaxis=dict(
-                title=("Date" if language_on else "Období"),
-                title_font=dict(size=16, #family="Source Sans Pro Bold", 
-                                ),
+                title="Období",
+                title_font=dict(size=16,                                ),
                 showgrid=True,
                 gridcolor="rgba(200, 200, 200, 0.3)", 
                 zeroline=False,
                 showline=True,
                 linewidth=1,
-                tickfont=dict(size=12, #family="Source Sans Pro",
-                              ),
+                tickfont=dict(size=12,                              ),
                 rangeslider = dict(visible=False)
                 ),
             yaxis=dict(
-                title=("Return" if language_on else "Návratnost"),
-                title_font=dict(size=16, #family="Source Sans Pro Bold",
-                                ),
+                title="Návratnost",
+                title_font=dict(size=16,                                ),
                 showgrid=True,
                 gridcolor="rgba(200, 200, 200, 0.3)",
                 zeroline=False,
                 showline=True,
                 linewidth=1,
-                tickfont=dict(size=12, #family="Source Sans Pro",
-                              ),
+                tickfont=dict(size=12,                               ),
                 ticksuffix="%",
                 autorange = True
                 ),
@@ -215,58 +172,45 @@ def Gen_Compare_Funds_Plots(df1, time, cumul):
 
 colmotto = st.columns([7, 1],)
 with colmotto[0]:
-    if not st.session_state['language']:
-        st.markdown(''':grey[{}]'''.format(motto_cz))
-    else:
-        st.markdown(''':grey[{}]'''.format(motto_eng))
+    st.markdown(''':grey[{}]'''.format(motto_cz))
+
 with colmotto[0]:
     st.markdown('')
 
 coltext = st.columns([11, 1, 3],)
 coltext = st.columns([11],)
 with coltext[0]:
-    if not st.session_state['language']:
-        st.title(title_1_cz)
-        st.markdown(text_1_cz)
-        st.markdown(text_2_cz)
-        st.markdown(text_3_cz)
-        st.header('Srovnání s jinými fondy', #help=funds_text
-                  )
-    else:
-        st.title(title_1_eng)
-        st.markdown(text_1_eng)
-        st.markdown(text_2_eng)
-        st.markdown(text_3_eng)
-        st.header('Comparison with other Funds', #help=funds_text
-                  )
+    st.title(title_1_cz)
+    st.markdown(text_1_cz)
+    st.markdown(text_2_cz)
+    st.markdown(text_3_cz)
+    st.header('Srovnání s jinými fondy',
+                )
     st.markdown(' ')
     buttons_cols = st.columns([2,1])
     with buttons_cols[0]:
         time_sel = st.segmented_control(
-            ("📆 Vyberte časové období" if not language_on else "📆 Select Time Period" ),
+            "📆 Vyberte časové období" ,
             options=time_options.keys(),
             format_func = lambda option: time_options[option],
             selection_mode='single',
             key='time_sel'
         )
     with buttons_cols[1]:
-        cumul_sel = st.pills(label=("📈 Vyberte metodu návratnosti" if not language_on else "📈 Select Return Method"),
+        cumul_sel = st.pills(label="📈 Vyberte metodu návratnosti",
                              options=cz_c.keys(),
-                             format_func=lambda option: eng_c[option] if language_on else cz_c[option],
+                             format_func=lambda option: cz_c[option],
                              selection_mode='single',
                              key='cumul_sel',
                              help=cumul_help_text
         )
-    with st.container(border=True, #height=500
+    with st.container(border=True, 
                       ):
-        st.plotly_chart(Gen_Compare_Funds_Plots(df, time_sel, cumul_sel), use_container_width=True, #config=config
+        st.plotly_chart(Gen_Compare_Funds_Plots(df, time_sel, cumul_sel), use_container_width=True,
                     )
 
-    if not st.session_state['language']:
-        st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 12. září 2025</span>', unsafe_allow_html=True)
-    else:
-        st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 09/12/2025</span>', unsafe_allow_html=True)
-    with st.expander(label=("💬 Vysvětlení zkratek fondů" if not language_on else "💬 Explanation of Fund abbreviations")):
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 25. září 2025</span>', unsafe_allow_html=True)
+    with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()
     

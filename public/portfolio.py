@@ -13,6 +13,9 @@ from MCCEFfuncs import *
 link_positions = 'data/Positions.csv'
 link_trades = 'data/AllTrades.csv'
 
+if "sel_date" not in st.session_state:
+    st.session_state["sel_date"] = 2
+
 @st.cache_data
 def CSV_data(trades_link: str, position_link: str):
     trades = pd.read_csv(trades_link, parse_dates=['TradeDate'], date_format='%m/%d/%y')
@@ -49,6 +52,8 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
     
     now_ny = datetime.now(pytz.timezone("America/New_York"))
     today = now_ny.date()
+    #n_days = 90
+    #start_date = today - timedelta(days=n_days)
     if time == 0:
         n_days = 90
         start_date = today - timedelta(days=n_days)
@@ -70,7 +75,7 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
         visible_df = df[(df.index >= (now_ny-timedelta(n_days))) & (df.index <= now_ny)]
     visible_min = visible_df["Low"].min()
     visible_max = visible_df["High"].max()
-    dashing = 'dot' #'solid' #'dot'
+    dashing = 'dot'
 
     fig = make_subplots(
         rows=2,
@@ -104,7 +109,6 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
         marker=dict(color="green", size=12, symbol="triangle-up", 
                     line=dict(width=1, color='darkblue')),
         name="Buy Trades",
-        #hovertemplate=f"<b> BUY %{{x}} :</b>  "+f"<b> %{{y:.2f}} {currency}</b><extra></extra>"
         hovertemplate=f"<span style='color:green'><b>BUY</b></span>: " \
             f"<span style='color:blue'><b>%{{x}}</b></span>: " \
             f"<span style='color:green'><b>%{{y:.2f}} {currency}</b></span><extra></extra>"
@@ -120,7 +124,6 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
         marker=dict(color="red", size=12, symbol="triangle-down", 
                     line=dict(width=1, color='darkblue')),
         name="Sell Trades",
-        #hovertemplate="<b> SELL %{x} :</b>  "+"<b> %{y:.2f}<extra></extra>"
         hovertemplate=f"<span style='color:red'><b>SELL</b></span>: " \
             f"<span style='color:blue'><b>%{{x}}</b></span>: " \
             f"<span style='color:red'><b>%{{y:.2f}} {currency}</b></span><extra></extra>"
@@ -165,23 +168,20 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
         showlegend=True, 
         height=650,
         plot_bgcolor='white',
-        xaxis2=dict(title=("Date" if language_on else "Období"), side='bottom', type="date",
+        xaxis2=dict(title=("Období"), side='bottom', type="date",
                 range=[start_date, (today + timedelta(days=3))],
                 ),
         xaxis_rangeslider_visible=False,
-        yaxis=dict(title=("Price ({})".format(currency) if language_on else "Cena ({})".format(currency)),
+        yaxis=dict(title=("Cena ({})".format(currency)),
                 range=[visible_min * 0.98, visible_max * 1.02],
                 ),
-        yaxis2=dict(title=("Position / Max Position (%)" if language_on else "Pozice / Max Pozice (%)"),
+        yaxis2=dict(title=("Pozice / Max Pozice (%)"),
                     ),
     ) 
     return fig
 
 
-option_map = {
-    0: 'CZ',
-    1: 'ENG',
-}
+
 time_options = {
     0: "3M",
     1: "6M",
@@ -197,64 +197,44 @@ range_text_cz = """
 - **YTD**: Od začátku aktuálního roku
 - **All**: Od začátku (2020)
 """
-range_text_eng = """
-- **1M**: Last 3 Months
-- **6M**: Last Half a Year
-- **1Y**: Last Year
-- **YTD**: Year To Date
-- **All**: From the Start (2020)
-"""
 
 
-if "language2" not in st.session_state:
-    st.session_state["language2"] = min(option_map.keys())
-if "sel_date" not in st.session_state:
-    st.session_state["sel_date"] = 2
 
 coltop = st.columns([14, 2],)
 with coltop[0]:
-    st.header('Candlestick Plot & Trades' if st.session_state["language2"] else 'Svíčkový graf a vykonané obchody')
+    st.header('Svíčkový graf a vykonané obchody')
 with coltop[1]:
     st.markdown(' ')
-    language_on = st.pills(label=('Select language' if st.session_state["language2"] else 'Vyberte jazyk'), 
-                           options = option_map.keys(),
-                           format_func = lambda option: option_map[option],
-                           selection_mode='single',
-                           key='language2', 
-                           help=("Změna jazyka obsahu: Čeština ⇄ Angličtina." if not st.session_state["language2"] else "Change the language of the content Czech ⇄ English."))
+
 colsel = st.columns([2,2])
 with colsel[0]:
     sel_date = st.segmented_control(
-            ("📆 Vyberte časové období" if not language_on else "📆 Select Time Period" ),
+            "📆 Vyberte časové období",
             options=time_options.keys(),
             format_func = lambda option: time_options[option],
             selection_mode='single',
             key='sel_date',
-            help=(range_text_cz if not language_on else range_text_eng)
+            help=(range_text_cz)
         )
 with colsel[1]:
-    sel_ticker = st.selectbox(("Select a Ticker" if language_on else "Vyberte Ticker"), list(uniq_ticks))
+    sel_ticker = st.selectbox(("Vyberte Ticker"), list(uniq_ticks))
 
 ohlc = tick_OHLC_GEN(sel_ticker)
-with st.container(border=True, #height=500
+with st.container(border=True,
                       ):
     st.plotly_chart(plot_candlestick(ohlc, trades, portfolio=portfolio, tick = sel_ticker, time=sel_date))
-if not st.session_state['language2']:
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 12. září 2025</span>', unsafe_allow_html=True)
-else:
-    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 09/12/2025</span>', unsafe_allow_html=True)
+st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 25. září 2025</span>', unsafe_allow_html=True)
 st.divider()
 
-st.header('Actual Positions Portfolio' if language_on else 'Portfolio aktuálních pozic')
+st.header('Portfolio aktuálních pozic')
 
 @st.fragment
 def Treemap_fig(df, colors):
     return My_Treemap(df, colors)
-with st.container(border=True, #height=500
+with st.container(border=True,
                       ):
-    st.plotly_chart(Treemap_fig(portfolio, 'RdYlGn')) #balance
-if not st.session_state['language2']:
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 12. září 2025</span>', unsafe_allow_html=True)
-else:
-    st.markdown('<span style="font-size:9pt; color: grey;">Last Update: 09/12/2025</span>', unsafe_allow_html=True)
+    st.plotly_chart(Treemap_fig(portfolio, 'RdYlGn')) 
+
+st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 25. září 2025</span>', unsafe_allow_html=True)
+
 
