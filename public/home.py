@@ -209,7 +209,7 @@ with coltext[0]:
         st.plotly_chart(Gen_Compare_Funds_Plots(df, time_sel, cumul_sel), use_container_width=True,
                     )
 
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 25. září 2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 26. září 2025</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()
