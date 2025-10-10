@@ -87,11 +87,11 @@ def My_Treemap(df: pd.DataFrame, color_continuous_scale: str):
     hover_templates = []
     for depth, id_ in zip(depths, ids):
         if depth == 0:  # 'All' level
-            hover_templates.append('<b>%{label}</b><br>Portfolio Total %: %{value:.0f}')
+            hover_templates.append('<b>%{label}</b><br>Celkové Portfolio v %: %{value:.0f}')
         elif depth == 1:  # Sector level
-            hover_templates.append('<b>%{label}</b><br>Sector Total %: %{value:.2f}')
+            hover_templates.append('<b>%{label}</b><br>Zastoupení Sektoru v %: %{value:.2f}')
         else:  # Ticker level
-            hover_templates.append('<b>%{label}</b><br>Name: %{customdata[0]}<br>Portfolio %: %{value:.2f}<extra></extra>')
+            hover_templates.append('<b>%{label}</b><br>Název: %{customdata[0]}<br>% z Portfolia: %{value:.2f}<extra></extra>')
 
     fig.update_traces(hovertemplate=hover_templates,
                       marker=dict(cornerradius=5,

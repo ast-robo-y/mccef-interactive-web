@@ -119,6 +119,7 @@ df = load_data(link_1, link_2)
 
 link_positions = 'data/Positions.csv'
 
+@st.fragment
 def Gen_Compare_Funds_Plots(df1, time, cumul):
     is_cumulative = cumul == 0
     df1 = Make_Growth_or_Cumulative_Return(df1, Cumulative=is_cumulative)
@@ -135,8 +136,8 @@ def Gen_Compare_Funds_Plots(df1, time, cumul):
                 hoverinfo='text',
                 hovertemplate=(
                     f"<b>{ticker}</b>"
-                    "<br>Date: %{x}<br>"
-                    "Value: %{y:,.2f}%<br>"
+                    "<br>Datum: %{x}<br>"
+                    "Hodnota: %{y:,.2f}%<br>"
                 ),
                 name=ticker,
                 hoverlabel= {'namelength': 0},
@@ -209,7 +210,7 @@ with coltext[0]:
         st.plotly_chart(Gen_Compare_Funds_Plots(df, time_sel, cumul_sel), use_container_width=True,
                     )
 
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 26. září 2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. říjen 2025</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()

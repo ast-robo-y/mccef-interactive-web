@@ -92,7 +92,7 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
                 high=df['High'],
                 low=df['Low'],
                 close=df['Close'], 
-                name='OHLC', 
+                name='Svíčky', 
                 increasing_line_color= '#3D9970',
                 increasing_fillcolor='#3D9970',
                 decreasing_line_color='#FF4136',
@@ -108,8 +108,8 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
         mode="markers",
         marker=dict(color="green", size=12, symbol="triangle-up", 
                     line=dict(width=1, color='darkblue')),
-        name="Buy Trades",
-        hovertemplate=f"<span style='color:green'><b>BUY</b></span>: " \
+        name="Vykonané Nákupy",
+        hovertemplate=f"<span style='color:green'><b>NÁKUP</b></span>: " \
             f"<span style='color:blue'><b>%{{x}}</b></span>: " \
             f"<span style='color:green'><b>%{{y:.2f}} {currency}</b></span><extra></extra>"
     ),
@@ -123,8 +123,8 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
         mode="markers",
         marker=dict(color="red", size=12, symbol="triangle-down", 
                     line=dict(width=1, color='darkblue')),
-        name="Sell Trades",
-        hovertemplate=f"<span style='color:red'><b>SELL</b></span>: " \
+        name="Vykonané Prodeje",
+        hovertemplate=f"<span style='color:red'><b>PRODEJ</b></span>: " \
             f"<span style='color:blue'><b>%{{x}}</b></span>: " \
             f"<span style='color:red'><b>%{{y:.2f}} {currency}</b></span><extra></extra>"
     ),
@@ -134,8 +134,8 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
     fig.add_trace(
         go.Scatter(x=df.index,
                 y=df['1wma'],
-                line = dict(color = 'blue', dash=dashing), name = '1-week MA', opacity=0.6,
-                hovertemplate=f"<b> WMA %{{x}} :</b>  "+f"<b> %{{y:.2f}} {currency}<extra></extra>",
+                line = dict(color = 'blue', dash=dashing), name = '7d Klouzavý průměr', opacity=0.6,
+                hovertemplate=f"<b> 7d-KP %{{x}} :</b>  "+f"<b> %{{y:.2f}} {currency}<extra></extra>",
                 visible='legendonly',
                 ),
                 row=1,
@@ -145,8 +145,8 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
     fig.add_trace(
         go.Scatter(x=df.index,
                 y=df['1mma'],
-                line = dict(color = 'magenta', dash=dashing), name = '1-month MA', opacity=0.6,
-                hovertemplate=f"<b> MMA %{{x}} :</b>  "+f"<b> %{{y:.2f}} {currency}<extra></extra>",
+                line = dict(color = 'magenta', dash=dashing), name = '30d Klouzavý průměr', opacity=0.6,
+                hovertemplate=f"<b> 30d-KP %{{x}} :</b>  "+f"<b> %{{y:.2f}} {currency}<extra></extra>",
                 visible='legendonly',
                 ),
                 row=1,
@@ -156,7 +156,7 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
     fig.add_trace(go.Bar(x=df_trades.index, 
                         y=df_trades['QuantityVisual'], 
                         opacity=0.6, 
-                        name='Position',
+                        name='Pozice',
                         hovertemplate="<b>%{x} :</b>  "+"<b> %{y:.2f} <extra></extra>"
                         ),
                         row=2,
@@ -223,7 +223,7 @@ ohlc = tick_OHLC_GEN(sel_ticker)
 with st.container(border=True,
                       ):
     st.plotly_chart(plot_candlestick(ohlc, trades, portfolio=portfolio, tick = sel_ticker, time=sel_date))
-st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 26. září 2025</span>', unsafe_allow_html=True)
+st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. říjen 2025</span>', unsafe_allow_html=True)
 st.divider()
 
 st.header('Portfolio aktuálních pozic')
@@ -235,6 +235,6 @@ with st.container(border=True,
                       ):
     st.plotly_chart(Treemap_fig(portfolio, 'RdYlGn')) 
 
-st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 26. září 2025</span>', unsafe_allow_html=True)
+st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. říjen 2025</span>', unsafe_allow_html=True)
 
 
