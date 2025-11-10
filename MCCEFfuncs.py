@@ -38,19 +38,19 @@ def BM_Comparison_Daily(link_1BM: str, link_3BM: str, ) -> dict:
         temp = df_1.copy()
         df_2 = df_1.copy()
         df_1 = temp
-    date = df_2['Date'].values[:-1]
-    BM_1 = df_2['BM1Return'].values[:-1]
-    BM_2 = df_2['BM2Return'].values[:-1]
-    BM_3 = df_2['BM3Return'].values[:-1]
-    BM_4 = df_1['BM1Return'].values[:-1]
-    MCCEF = df_2['ConsolidatedReturn'].values[:-1]
+    date = df_2['Date'].values[:]
+    BM_1 = df_2['BM1Return'].values[:]
+    BM_2 = df_2['BM2Return'].values[:]
+    BM_3 = df_2['BM3Return'].values[:]
+    BM_4 = df_1['BM1Return'].values[:]
+    MCCEF = df_2['ConsolidatedReturn'].values[:]
 
     list_of_tuples = list(zip(date, BM_1, BM_2, BM_3, BM_4, MCCEF))
     df = pd.DataFrame(list_of_tuples, columns=['Date', 
-                                                      np.unique(df_2['BM1'].values[:-1])[0], 
-                                                      np.unique(df_2['BM2'].values[:-1])[0], 
-                                                      np.unique(df_2['BM3'].values[:-1])[0], 
-                                                      np.unique(df_1['BM1'].values[:-1])[0], 'MCCEF' ])
+                                                      np.unique(df_2['BM1'].values[:])[0], 
+                                                      np.unique(df_2['BM2'].values[:])[0], 
+                                                      np.unique(df_2['BM3'].values[:])[0], 
+                                                      np.unique(df_1['BM1'].values[:])[0], 'MCCEF' ])
     dataframes_by_year={year: group.reset_index(drop=True) for year, group in df.groupby(df['Date'].dt.year)}
     dataframes_by_year['all'] = df
     return dataframes_by_year

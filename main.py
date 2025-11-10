@@ -10,14 +10,14 @@ st.logo(main_body_logo2, size='large',
         )
 st.sidebar.markdown('<div class="custom-divider"></div>', unsafe_allow_html=True)
 
-home_page= st.Page("public/home.py", title="Home", icon=":material/home:", default=True)
+home_page= st.Page("public/home.py", title="Info o Fondu", icon=":material/home:", default=True)
 portfolio_page = st.Page("public/portfolio.py", title="Portfolio", icon=":material/finance_mode:")
+docs_page = st.Page("public/documents.py", title="Dokumenty", icon=":material/picture_as_pdf:")
 
 pg = st.navigation(
     {
-        "Account": [home_page, portfolio_page],
+        "Podstránky": [home_page, portfolio_page, docs_page],
     }
 )
-
 
 pg.run()

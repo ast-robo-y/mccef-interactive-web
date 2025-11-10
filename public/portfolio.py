@@ -75,7 +75,7 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
         visible_df = df[(df.index >= (now_ny-timedelta(n_days))) & (df.index <= now_ny)]
     visible_min = visible_df["Low"].min()
     visible_max = visible_df["High"].max()
-    dashing = 'dot'
+    dashing = 'solid'
 
     fig = make_subplots(
         rows=2,
@@ -134,7 +134,7 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
     fig.add_trace(
         go.Scatter(x=df.index,
                 y=df['1wma'],
-                line = dict(color = 'blue', dash=dashing), name = '7d Klouzavý průměr', opacity=0.6,
+                line = dict(color = 'blue', dash=dashing), name = '7d Klouzavý průměr', opacity=0.5,
                 hovertemplate=f"<b> 7d-KP %{{x}} :</b>  "+f"<b> %{{y:.2f}} {currency}<extra></extra>",
                 visible='legendonly',
                 ),
@@ -145,7 +145,7 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
     fig.add_trace(
         go.Scatter(x=df.index,
                 y=df['1mma'],
-                line = dict(color = 'magenta', dash=dashing), name = '30d Klouzavý průměr', opacity=0.6,
+                line = dict(color = 'magenta', dash=dashing), name = '30d Klouzavý průměr', opacity=0.5,
                 hovertemplate=f"<b> 30d-KP %{{x}} :</b>  "+f"<b> %{{y:.2f}} {currency}<extra></extra>",
                 visible='legendonly',
                 ),
@@ -223,7 +223,7 @@ ohlc = tick_OHLC_GEN(sel_ticker)
 with st.container(border=True,
                       ):
     st.plotly_chart(plot_candlestick(ohlc, trades, portfolio=portfolio, tick = sel_ticker, time=sel_date))
-st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. říjen 2025</span>', unsafe_allow_html=True)
+st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. listopad 2025</span>', unsafe_allow_html=True)
 st.divider()
 
 st.header('Portfolio aktuálních pozic')
@@ -235,6 +235,6 @@ with st.container(border=True,
                       ):
     st.plotly_chart(Treemap_fig(portfolio, 'RdYlGn')) 
 
-st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. říjen 2025</span>', unsafe_allow_html=True)
+st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. listopad 2025</span>', unsafe_allow_html=True)
 
 

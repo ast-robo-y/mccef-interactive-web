@@ -5,49 +5,120 @@ import numpy as np
 from datetime import date, datetime, timedelta
 import yfinance as yf 
 from MCCEFfuncs import *
+import base64
+
 
 @st.fragment
 def Partners():
     #st.divider()
     st.header(":blue[Partneři]")
-    ibkr_path =  "assets/company_icons/Interactive_Brokers.svg"
-    ibkrsrc = "https://upload.wikimedia.org/wikipedia/commons/c/ca/Interactive_Brokers_Logo_%282014%29.svg"
-    deloitte = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Deloitte.svg/1280px-Deloitte.svg.png"
-    richfox = "./assets/company_icons/RichFoxLogo.webp" 
-    colpar = st.columns([3, 3, 2],)
+    ibkr = "assets/company_icons/Interactive_Brokers.svg"
+    deloitte = "assets/company_icons/Logo_of_Deloitte.png"
+    richfox = "assets/company_icons/RichFoxLogo.webp" 
+    bolder = "assets/company_icons/bolder.webp" 
+
+    colpar = st.columns([3, 3, 2, 3],)
     with colpar[0]:
+        with open(ibkr, "r", encoding='utf-8') as im_ib:
+            ibkr_svg = im_ib.read()
+        ibkr_base64 = base64.b64encode(ibkr_svg.encode('utf-8')).decode()
+        ib_hover_text = "Obchodní platforma"
         st.markdown(
-        f"""
-        <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-            <a href="https://www.interactivebrokers.com/">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Interactive_Brokers_Logo_%282014%29.svg" width="250" height="50" style="border-radius:0px;">
-            </a>
-        </div>
-        """,
-        unsafe_allow_html=True, help="Obchodní platforma"
+            f"""
+            <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
+                <a href="https://www.interactivebrokers.com/">
+                    <img src="data:image/svg+xml;base64,{ibkr_base64}"
+                        width="250" height="50"
+                        style="border-radius:0px; "
+                </a>
+            </div>
+            """,
+            unsafe_allow_html=True, help = (ib_hover_text)
         )
+        #st.markdown(
+        #f"""
+        #<div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
+        #    <a href="https://www.interactivebrokers.com/">
+        #        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Interactive_Brokers_Logo_%282014%29.svg" width="250" height="50" style="border-radius:0px;">
+        #    </a>
+        #</div>
+        #""",
+        #unsafe_allow_html=True, help="Obchodní platforma"
+        #)
     with colpar[1]:
+        with open(deloitte, "rb") as im_del:
+            del_png = im_del.read()
+        del_base64 = base64.b64encode(del_png).decode()
+        del_hover_text = "Revizor účtů"
         st.markdown(
-        """
-        <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-            <a href="https://www2.deloitte.com/cz/cs.html">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_of_Deloitte.svg" width="250" height="50" style="border-radius:0px;">
-            </a>
-        </div>
-        """,
-        unsafe_allow_html=True, help="Revizor účtů"
+            f"""
+            <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
+                <a href="https://www2.deloitte.com/cz/cs.html">
+                    <img src="data:image/png;base64,{del_base64}"
+                        width="250" height="50"
+                        style="border-radius:0px; "
+                </a>
+            </div>
+            """,
+            unsafe_allow_html=True, help = (del_hover_text)
         )
+        #st.markdown(
+        #"""
+        #<div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
+        #    <a href="https://www2.deloitte.com/cz/cs.html">
+        #        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_of_Deloitte.svg" width="250" height="50" style="border-radius:0px;">
+        #    </a>
+        #</div>
+        #""",
+        #unsafe_allow_html=True, help="Revizor účtů"
+        #)
     with colpar[2]:
+        with open(richfox, "rb") as rich:
+            rich_bytes = rich.read()
+        rich_base64 = base64.b64encode(rich_bytes).decode()
+        rf_hover_text = "Investiční manažer"
         st.markdown(
-        """
-        <div style='display: flex; justify-content: top; align-items: flex-end; height: 80px'>
-            <a href="https://www.richfox.com/assets-management/">
-                <img src="https://www.richfox.com/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Flogo.e7e91d55.png&w=1920&q=75" width="150" height="150" style="border-radius:0px; margin-bottom: -40px;">
-            </a>
-        </div>
-        """,
-        unsafe_allow_html=True, help=("Investiční manažer")
+            f"""
+            <div style='display: flex; justify-content: top; align-items: flex-end; height: 80px'>
+                <a href="https://www.richfox.com/assets-management/">
+                    <img src="data:image/webp;base64,{rich_base64}"
+                        width="150" height="150"
+                        style="border-radius:0px; margin-bottom:-40px;"
+                </a>
+            </div>
+            """,
+            unsafe_allow_html=True, help = (rf_hover_text)
         )
+        #st.markdown(
+        #"""
+        #<div style='display: flex; justify-content: top; align-items: flex-end; height: 80px'>
+        #    <a href="https://www.richfox.com/assets-management/">
+        #        <img src="https://www.richfox.com/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Flogo.e7e91d55.png&w=1920&q=75" width="150" height="150" style="border-radius:0px; margin-bottom: -40px;">
+        #    </a>
+        #</div>
+        #""",
+        #unsafe_allow_html=True, help=("Investiční manažer")
+        #)
+    with colpar[3]:
+        with open(bolder, "rb") as b:
+            b_bytes = b.read()
+        b_base64 = base64.b64encode(b_bytes).decode()
+        b_hover_text = "Administrátor fondu"
+        st.markdown(
+            f"""
+            <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
+                <a href="https://boldergroup.com/">
+                    <img src="data:image/webp;base64,{b_base64}"
+                        width="225" height="125"
+                        style="border-radius:0px; margin-bottom:-50px; "
+                </a>
+            </div>
+            """,
+            unsafe_allow_html=True, help = (b_hover_text)
+        )
+    st.markdown(' ')
+    st.markdown(' ')
+
 
 time_options = {
     0: "2020",
@@ -62,10 +133,8 @@ cz_c = {
      0: "Kumulativní",
      1: "Sčítací"
 }
-
-
-if "time_sel" not in st.session_state:
-    st.session_state["time_sel"] = max(time_options.keys())
+if "time_sel" not in st.session_state or st.session_state['time_sel'] == None:
+    st.session_state['time_sel'] = list(time_options.keys())[-1]
 if "cumul_sel" not in st.session_state:
     st.session_state["cumul_sel"] = max(cz_c.keys())
 
@@ -116,8 +185,17 @@ def Portfolio_tickers(l1: str):
 link_1 = 'data/1fund.csv'
 link_2 = 'data/3funds.csv'
 df = load_data(link_1, link_2)
+df1 = load_data(link_1, link_2)
+df2 = load_data(link_1, link_2)
 
 link_positions = 'data/Positions.csv'
+
+@st.cache_data
+def return_mccef_last(df2, time, cumul):
+    is_cumulative = cumul == 0
+    df2 = Make_Growth_or_Cumulative_Return(df2, Cumulative=is_cumulative)
+    times = [2020, 2021, 2022, 2023, 2024, 2025, 'all']
+    return df2[times[time]]['MCCEF'].iloc[-1]
 
 @st.fragment
 def Gen_Compare_Funds_Plots(df1, time, cumul):
@@ -145,6 +223,8 @@ def Gen_Compare_Funds_Plots(df1, time, cumul):
             )
         )
         fig.update_layout(
+            #autosize=True,
+            height=550,
             xaxis=dict(
                 title="Období",
                 title_font=dict(size=16,                                ),
@@ -178,7 +258,7 @@ with colmotto[0]:
 with colmotto[0]:
     st.markdown('')
 
-coltext = st.columns([11, 1, 3],)
+#coltext = st.columns([11, 1, 3],)
 coltext = st.columns([11],)
 with coltext[0]:
     st.title(title_1_cz)
@@ -192,10 +272,10 @@ with coltext[0]:
     with buttons_cols[0]:
         time_sel = st.segmented_control(
             "📆 Vyberte časové období" ,
-            options=time_options.keys(),
+            options=list(time_options.keys()),
             format_func = lambda option: time_options[option],
             selection_mode='single',
-            key='time_sel'
+            key='time_sel',
         )
     with buttons_cols[1]:
         cumul_sel = st.pills(label="📈 Vyberte metodu návratnosti",
@@ -205,13 +285,33 @@ with coltext[0]:
                              key='cumul_sel',
                              help=cumul_help_text
         )
-    with st.container(border=True, 
+    with st.container(border=True, height=600
                       ):
-        st.plotly_chart(Gen_Compare_Funds_Plots(df, time_sel, cumul_sel), use_container_width=True,
+        st.plotly_chart(Gen_Compare_Funds_Plots(df1, time_sel, cumul_sel), width='stretch',
                     )
+        ret_mccef = return_mccef_last(df2, time_sel, cumul_sel)
+        st.markdown(
+            """
+            <div style="position: relative;">
+                <div title="Návratnost MCCEF pro zvolené období"
+                    style="
+                        position: absolute; 
+                        top: -535px; 
+                        left: 20px; 
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: rgba(25,50,100,50); 
+                        background-color: rgba(255,255,255,0.5); 
+                        padding: 5px;
+                    ">
+                    Návratnost: {} %
+                </div>
+            </div>
+            """.format(round(ret_mccef,2)),
+            unsafe_allow_html=True
+        )
 
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. říjen 2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. listopad 2025</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()
-    
