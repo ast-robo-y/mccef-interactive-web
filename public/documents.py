@@ -7,24 +7,25 @@ st.markdown(' ')
 col_pdfs = st.columns([1, 3])
 with col_pdfs[0]:
     option = st.selectbox(
-            "How would you like to be contacted?",
-            ("Summary", "Key Info"),
+            "Zvolte PDF k zobrazení a stažení.",
+            ("Přehled", "Klíčové info"),
         )
-    if option == 'Summary':
+    if option == 'Přehled':
         pdf = 'data/Summary.pdf'
         zoom = 0.8
-    elif option == 'Key Info':
+    elif option == 'Klíčové info':
         pdf = 'data/Key_information_mccef.pdf'
         zoom = 1.15
     with open(pdf, "rb") as f:
         pdf_bytes = f.read()
 
-    # Create a download button
+    
     st.download_button(
-        label="Download PDF",
+        label="Stáhnout PDF",
         data=pdf_bytes,
         file_name= pdf.split('/')[-1],
-        mime="application/pdf"
+        mime="application/pdf",
+        icon = '📥'
     )
 with col_pdfs[1]:
     with st.container(border=True):    
