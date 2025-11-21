@@ -13,7 +13,7 @@ from MCCEFfuncs import *
 link_positions = 'data/Positions.csv'
 link_trades = 'data/AllTrades.csv'
 
-if "sel_date" not in st.session_state:
+if "sel_date" not in st.session_state or st.session_state['sel_date'] == None:
     st.session_state["sel_date"] = 2
 
 @st.cache_data
@@ -223,7 +223,7 @@ ohlc = tick_OHLC_GEN(sel_ticker)
 with st.container(border=True,
                       ):
     st.plotly_chart(plot_candlestick(ohlc, trades, portfolio=portfolio, tick = sel_ticker, time=sel_date))
-st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. listopad 2025</span>', unsafe_allow_html=True)
+st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 21. listopad 2025</span>', unsafe_allow_html=True)
 st.divider()
 
 st.header('Portfolio aktuálních pozic')
@@ -235,6 +235,6 @@ with st.container(border=True,
                       ):
     st.plotly_chart(Treemap_fig(portfolio, 'RdYlGn')) 
 
-st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 10. listopad 2025</span>', unsafe_allow_html=True)
+st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 21. listopad 2025</span>', unsafe_allow_html=True)
 
 
