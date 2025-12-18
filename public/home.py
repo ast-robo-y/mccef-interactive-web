@@ -31,7 +31,7 @@ def Partners():
                 display: inline-block;
             }}
             .img-wrap:hover::after {{
-                content: "Obchodní platforma";
+                content: attr(data-tooltip);
                 position: absolute;
                 bottom: 100%;
                 left: 50%;
