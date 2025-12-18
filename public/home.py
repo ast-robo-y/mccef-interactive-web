@@ -71,7 +71,7 @@ def Partners():
                 display: inline-block;
             }}
             .img-wrap:hover::after {{
-                content: "Revizor účtů";
+                content: attr(data-tooltip);
                 position: absolute;
                 bottom: 100%;
                 left: 50%;
@@ -87,7 +87,7 @@ def Partners():
             }}
             </style>
             <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-                <div class="img-wrap">    
+                <div class="img-wrap" data-tooltip="Revizor účtů">    
                     <a href="https://www2.deloitte.com/cz/cs.html">
                     <img src="data:image/png;base64,{del_base64}"
                         width="250" height="50"
@@ -111,7 +111,7 @@ def Partners():
                 display: inline-block;
             }}
             .img-wrap:hover::after {{
-                content: "Investiční manažer";
+                content: attr(data-tooltip);
                 position: absolute;
                 bottom: 100%;
                 left: 50%;
@@ -127,7 +127,7 @@ def Partners():
             }}
             </style>
             <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-                <div class="img-wrap">    
+                <div class="img-wrap" data-tooltip="Investiční manažer">    
                     <a href="https://www.richfox.com/assets-management/">
                         <img src="data:image/webp;base64,{rich_base64}"
                             width="150" height="150"
@@ -151,7 +151,7 @@ def Partners():
                 display: inline-block;
             }}
             .img-wrap:hover::after {{
-                content: "Administrátor fondu";
+                content: attr(data-tooltip);
                 position: absolute;
                 bottom: 100%;
                 left: 50%;
@@ -167,7 +167,7 @@ def Partners():
             }}
             </style>
             <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-                <div class="img-wrap">    
+                <div class="img-wrap" data-tooltip="Administrátor fondu">    
                     <a href="https://boldergroup.com/">
                         <img src="data:image/webp;base64,{b_base64}"
                             width="225" height="125"
