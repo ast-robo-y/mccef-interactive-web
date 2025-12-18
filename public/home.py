@@ -353,11 +353,53 @@ with coltext[0]:
                     )
         ret_mccef = return_mccef_last(df2, time_sel, cumul_sel)
         st.markdown(
+        f"""
+        <style>
+        .hover-wrap {{
+            position: relative;
+            display: inline-block;
+        }}
+
+        .hover-wrap:hover::after {{
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 0;
+            background: #333;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            white-space: nowrap;
+            margin-bottom: 6px;
+            z-index: 1000;
+        }}
+        </style>
+        <div style="position: relative;">
+            <div class="hover-wrap"
+                data-tooltip="Návratnost MCCEF pro zvolené období"
+                style="
+                    position: absolute;
+                    top: -535px;
+                    left: 20px;
+                    font-size: 24px;
+                    font-weight: bold;
+                    color: rgba(25,50,100,0.5);
+                    background-color: rgba(255,255,255,0.5);
+                    padding: 5px;
+                ">
+                Návratnost: {round(ret_mccef, 2)} %
+            </div>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    '''    st.markdown(
             """
             <div style="position: relative;">
                 <div title="Návratnost MCCEF pro zvolené období"
                     style="
-                        position: absolute; 
+                        position: absolute;
                         top: -535px; 
                         left: 20px; 
                         font-size: 24px;
@@ -372,7 +414,8 @@ with coltext[0]:
             """.format(round(ret_mccef,2)),
             unsafe_allow_html=True
         )
-
+    '''
+    
     st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 18. prosinec 2025</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
