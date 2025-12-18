@@ -371,7 +371,7 @@ with coltext[0]:
             border-radius: 4px;
             font-size: 12px;
             white-space: nowrap;
-            margin-bottom: 6px;
+            margin-bottom: 2px;
             z-index: 1000;
         }}
         </style>
@@ -384,7 +384,7 @@ with coltext[0]:
                     left: 20px;
                     font-size: 24px;
                     font-weight: bold;
-                    color: rgba(25,50,100,0.5);
+                    color: rgba(25,50,100,1);
                     background-color: rgba(255,255,255,0.5);
                     padding: 5px;
                 ">
