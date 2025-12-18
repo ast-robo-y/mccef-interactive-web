@@ -33,7 +33,7 @@ def Partners():
                 </a>
             </div>
             """,
-            unsafe_allow_html=True, help = (ib_hover_text)
+            unsafe_allow_html=True, help = ib_hover_text
         )
         #st.markdown(
         #f"""
@@ -60,7 +60,7 @@ def Partners():
                 </a>
             </div>
             """,
-            unsafe_allow_html=True, help = (del_hover_text)
+            unsafe_allow_html=True, help = del_hover_text
         )
         #st.markdown(
         #"""
@@ -87,7 +87,7 @@ def Partners():
                 </a>
             </div>
             """,
-            unsafe_allow_html=True, help = (rf_hover_text)
+            unsafe_allow_html=True, help = rf_hover_text
         )
         #st.markdown(
         #"""
@@ -114,7 +114,7 @@ def Partners():
                 </a>
             </div>
             """,
-            unsafe_allow_html=True, help = (b_hover_text)
+            unsafe_allow_html=True, help = b_hover_text
         )
     st.markdown(' ')
     st.markdown(' ')
