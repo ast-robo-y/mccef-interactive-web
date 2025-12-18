@@ -47,7 +47,7 @@ def Partners():
             }}
             </style>
             <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-                <div class="img-wrap">    
+                <div class="img-wrap" data-tooltip="Obchodní platforma">    
                     <a href="https://www.interactivebrokers.com/">
                     <img src="data:image/svg+xml;base64,{ibkr_base64}"
                         width="250" height="50"
