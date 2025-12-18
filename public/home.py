@@ -25,26 +25,39 @@ def Partners():
         ib_hover_text = "Obchodní platforma"
         st.markdown(
             f"""
+            <style>
+            .img-wrap {{
+                position: relative;
+                display: inline-block;
+            }}
+            .img-wrap:hover::after {{
+                content: "Obchodní platforma";
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #333;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                white-space: nowrap;
+                margin-bottom: 6px;
+                z-index: 1000;
+            }}
+            </style>
             <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-                <a href="https://www.interactivebrokers.com/">
+                <div class="img-wrap">    
+                    <a href="https://www.interactivebrokers.com/">
                     <img src="data:image/svg+xml;base64,{ibkr_base64}"
                         width="250" height="50"
                         style="border-radius:0px; "
-                </a>
+                    </a>
+                </div>
             </div>
             """,
-            unsafe_allow_html=True, help = ib_hover_text
+            unsafe_allow_html=True, #help = ib_hover_text
         )
-        #st.markdown(
-        #f"""
-        #<div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-        #    <a href="https://www.interactivebrokers.com/">
-        #        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Interactive_Brokers_Logo_%282014%29.svg" width="250" height="50" style="border-radius:0px;">
-        #    </a>
-        #</div>
-        #""",
-        #unsafe_allow_html=True, help="Obchodní platforma"
-        #)
     with colpar[1]:
         with open(deloitte, "rb") as im_del:
             del_png = im_del.read()
@@ -52,26 +65,39 @@ def Partners():
         del_hover_text = "Revizor účtů"
         st.markdown(
             f"""
+            <style>
+            .img-wrap {{
+                position: relative;
+                display: inline-block;
+            }}
+            .img-wrap:hover::after {{
+                content: "Revizor účtů";
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #333;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                white-space: nowrap;
+                margin-bottom: 6px;
+                z-index: 1000;
+            }}
+            </style>
             <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-                <a href="https://www2.deloitte.com/cz/cs.html">
+                <div class="img-wrap">    
+                    <a href="https://www2.deloitte.com/cz/cs.html">
                     <img src="data:image/png;base64,{del_base64}"
                         width="250" height="50"
                         style="border-radius:0px; "
-                </a>
+                    </a>
+                </div>
             </div>
             """,
-            unsafe_allow_html=True, help = del_hover_text
+            unsafe_allow_html=True, #help = del_hover_text
         )
-        #st.markdown(
-        #"""
-        #<div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-        #    <a href="https://www2.deloitte.com/cz/cs.html">
-        #        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_of_Deloitte.svg" width="250" height="50" style="border-radius:0px;">
-        #    </a>
-        #</div>
-        #""",
-        #unsafe_allow_html=True, help="Revizor účtů"
-        #)
     with colpar[2]:
         with open(richfox, "rb") as rich:
             rich_bytes = rich.read()
@@ -79,26 +105,39 @@ def Partners():
         rf_hover_text = "Investiční manažer"
         st.markdown(
             f"""
-            <div style='display: flex; justify-content: top; align-items: flex-end; height: 80px'>
-                <a href="https://www.richfox.com/assets-management/">
-                    <img src="data:image/webp;base64,{rich_base64}"
-                        width="150" height="150"
-                        style="border-radius:0px; margin-bottom:-40px;"
-                </a>
+            <style>
+            .img-wrap {{
+                position: relative;
+                display: inline-block;
+            }}
+            .img-wrap:hover::after {{
+                content: "Investiční manažer";
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #333;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                white-space: nowrap;
+                margin-bottom: 6px;
+                z-index: 1000;
+            }}
+            </style>
+            <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
+                <div class="img-wrap">    
+                    <a href="https://www.richfox.com/assets-management/">
+                        <img src="data:image/webp;base64,{rich_base64}"
+                            width="150" height="150"
+                            style="border-radius:0px; margin-bottom:-40px;"
+                    </a>
+                </div>
             </div>
             """,
-            unsafe_allow_html=True, help = rf_hover_text
+            unsafe_allow_html=True, #help = rf_hover_text
         )
-        #st.markdown(
-        #"""
-        #<div style='display: flex; justify-content: top; align-items: flex-end; height: 80px'>
-        #    <a href="https://www.richfox.com/assets-management/">
-        #        <img src="https://www.richfox.com/_next/image/?url=%2F_next%2Fstatic%2Fmedia%2Flogo.e7e91d55.png&w=1920&q=75" width="150" height="150" style="border-radius:0px; margin-bottom: -40px;">
-        #    </a>
-        #</div>
-        #""",
-        #unsafe_allow_html=True, help=("Investiční manažer")
-        #)
     with colpar[3]:
         with open(bolder, "rb") as b:
             b_bytes = b.read()
@@ -114,6 +153,9 @@ def Partners():
             .img-wrap:hover::after {{
                 content: "Administrátor fondu";
                 position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
                 background: #333;
                 color: white;
                 padding: 4px 8px;
