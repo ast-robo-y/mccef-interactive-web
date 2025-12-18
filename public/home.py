@@ -394,28 +394,6 @@ with coltext[0]:
         """,
         unsafe_allow_html=True
     )
-    '''    st.markdown(
-            """
-            <div style="position: relative;">
-                <div title="Návratnost MCCEF pro zvolené období"
-                    style="
-                        position: absolute;
-                        top: -535px; 
-                        left: 20px; 
-                        font-size: 24px;
-                        font-weight: bold;
-                        color: rgba(25,50,100,50); 
-                        background-color: rgba(255,255,255,0.5); 
-                        padding: 5px;
-                    ">
-                    Návratnost: {} %
-                </div>
-            </div>
-            """.format(round(ret_mccef,2)),
-            unsafe_allow_html=True
-        )
-    '''
-    
     st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 18. prosinec 2025</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
