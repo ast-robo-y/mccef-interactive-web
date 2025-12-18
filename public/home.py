@@ -106,15 +106,35 @@ def Partners():
         b_hover_text = "Administrátor fondu"
         st.markdown(
             f"""
+            <style>
+            .img-wrap {{
+                position: relative;
+                display: inline-block;
+            }}
+            .img-wrap:hover::after {{
+                content: "Administrátor fondu";
+                position: absolute;
+                background: #333;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 4px;
+                font-size: 12px;
+                white-space: nowrap;
+                margin-bottom: 6px;
+                z-index: 1000;
+            }}
+            </style>
             <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-                <a href="https://boldergroup.com/">
-                    <img src="data:image/webp;base64,{b_base64}"
-                        width="225" height="125"
-                        style="border-radius:0px; margin-bottom:-50px; "
-                </a>
+                <div class="img-wrap">    
+                    <a href="https://boldergroup.com/">
+                        <img src="data:image/webp;base64,{b_base64}"
+                            width="225" height="125"
+                            style="border-radius:0px; margin-bottom:-50px; "
+                    </a>
+                </div>
             </div>
             """,
-            unsafe_allow_html=True, help = b_hover_text
+            unsafe_allow_html=True, #help = b_hover_text
         )
     st.markdown(' ')
     st.markdown(' ')
