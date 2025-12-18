@@ -287,7 +287,7 @@ with coltext[0]:
         )
     with st.container(border=True, height=600
                       ):
-        st.plotly_chart(Gen_Compare_Funds_Plots(df1, time_sel, cumul_sel), width='stretch',
+        st.plotly_chart(Gen_Compare_Funds_Plots(df1, time_sel, cumul_sel), #width='stretch',
                     )
         ret_mccef = return_mccef_last(df2, time_sel, cumul_sel)
         st.markdown(
@@ -311,7 +311,7 @@ with coltext[0]:
             unsafe_allow_html=True
         )
 
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 21. listopad 2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 18. prosinec 2025</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()
