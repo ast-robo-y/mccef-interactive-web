@@ -189,7 +189,8 @@ time_options = {
     3: "2023",
     4: "2024",
     5: "2025",
-    6: "All"
+    6: "2026",
+    7: "All"
 }
 cz_c = {
      0: "Kumulativní",
@@ -256,7 +257,7 @@ link_positions = 'data/Positions.csv'
 def return_mccef_last(df2, time, cumul):
     is_cumulative = cumul == 0
     df2 = Make_Growth_or_Cumulative_Return(df2, Cumulative=is_cumulative)
-    times = [2020, 2021, 2022, 2023, 2024, 2025, 'all']
+    times = [2020, 2021, 2022, 2023, 2024, 2025, 2026, 'all']
     return df2[times[time]]['MCCEF'].iloc[-1]
 
 @st.fragment
@@ -264,7 +265,7 @@ def Gen_Compare_Funds_Plots(df1, time, cumul):
     is_cumulative = cumul == 0
     df1 = Make_Growth_or_Cumulative_Return(df1, Cumulative=is_cumulative)
     fig = go.Figure()
-    times = [2020, 2021, 2022, 2023, 2024, 2025, 'all']
+    times = [2020, 2021, 2022, 2023, 2024, 2025, 2026, 'all']
     tickers = df1[times[time]].columns[1:]
     for i, ticker in enumerate(tickers): 
         fig.add_trace(
@@ -394,7 +395,7 @@ with coltext[0]:
         """,
         unsafe_allow_html=True
     )
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 18. prosinec 2025</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 14. leden 2026</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()
