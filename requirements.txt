@@ -1,4 +1,4 @@
-altair<5
+altair
 datetime
 numpy
 pandas
