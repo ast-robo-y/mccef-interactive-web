@@ -1,9 +1,9 @@
-altair
+altair<5
 datetime
 numpy
 pandas
 plotly
 pytz
-streamlit
+streamlit>1.20.0
 streamlit-pdf-viewer
 yfinance
