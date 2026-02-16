@@ -11,22 +11,22 @@ with col_pdfs[0]:
             ("Přehled", "Klíčové info", "Info Memorandum ENG", "Info Memorandum CZ", "Formulář subskripce", "Formulář certifikace"),
         )
     if option == 'Přehled':
-        pdf = 'data/Summary.pdf'
+        pdf = 'data/pdfs/Summary.pdf'
         zoom = 0.8
     elif option == 'Klíčové info':
-        pdf = 'data/Key_information_mccef.pdf'
+        pdf = 'data/pdfs/Key_information_mccef.pdf'
         zoom = 1.15
     elif option == "Info Memorandum ENG":
-        pdf = 'data/Information_memorandum_2025_ENG.pdf'
+        pdf = 'data/pdfs/Information_memorandum_2025_ENG.pdf'
         zoom = 1.15
     elif option == "Info Memorandum CZ":
-        pdf = 'data/Information_memorandum_2025_CZ.pdf'
+        pdf = 'data/pdfs/Information_memorandum_2025_CZ.pdf'
         zoom = 1.15
     elif option == "Formulář subskripce":
-        pdf = 'data/Subscription_form.pdf'
+        pdf = 'data/pdfs/Subscription_form.pdf'
         zoom = 1.15
     elif option == "Formulář certifikace":
-        pdf = 'data/Individual_self_certification_form.pdf'
+        pdf = 'data/pdfs/Individual_self_certification_form.pdf'
         zoom = 1.15
     with open(pdf, "rb") as f:
         pdf_bytes = f.read()
