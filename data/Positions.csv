@@ -1,39 +1,41 @@
 labels,parents,values,names,color,currency
-8TRA.DE,Industrials,0.816259367,Traton SE,0.816259367,EUR
-ADBE,Technology,1.218696803,Adobe Inc.,1.218696803,USD
-AMD,Technology,0.49487741,"Advanced Micro Devices, Inc.",0.49487741,USD
-ASML,Technology,3.628316982,ASML Holding N.V.,3.628316982,USD
-BAC,Financial Services,0.078658214,Bank of America Corporation,0.078658214,USD
-BARC.L,Financial Services,2.722583143,Barclays PLC,2.722583143,GBp
-BAS,Basic Materials,0.540147787,Badische Anilin- & Soda-Fabrik,0.540147787,EUR
-BRK-B,Financial Services,1.219986831,Berkshire Hathaway Inc.,1.219986831,USD
-CSCO,Technology,0.082647703,"Cisco Systems, Inc.",0.082647703,USD
-CSX,Industrials,0.197086333,CSX Corporation,0.197086333,USD
-DB,Financial Services,0.91980206,Deutsche Bank Aktiengesellschaft,0.91980206,USD
-DBK.DE,Financial Services,5.815650426,Deutsche Bank Aktiengesellschaft,5.815650426,EUR
-ETL.PA,Technology,3.676775714,Eutelsat Communications S.A.,3.676775714,EUR
-GS,Financial Services,1.408116621,"The Goldman Sachs Group, Inc.",1.408116621,USD
-HAG.F,Industrials,4.362350359,Hensoldt AG,4.362350359,EUR
-HPQ,Technology,6.632240223,HP Inc.,6.632240223,USD
-IBKR,Financial Services,1.01519381,"Interactive Brokers Group, Inc.",1.01519381,USD
-IFX.DE,Technology,5.027844987,Infineon Technologies AG,5.027844987,EUR
-JNJ,Healthcare,3.264883914,Johnson & Johnson,3.264883914,USD
-JPM,Financial Services,1.330632377,JPMorgan Chase & Co.,1.330632377,USD
-MOS,Basic Materials,5.517187441,The Mosaic Company,5.517187441,USD
-MSFT,Technology,0.46724448,Microsoft Corporation,0.46724448,USD
-MTX.DE,Industrials,5.759708194,MTU Aero Engines AG,5.759708194,EUR
-NOK,Technology,0.470384738,Nokia Oyj,0.470384738,USD
-NTR,Basic Materials,4.677142797,Nutrien Ltd.,4.677142797,USD
-NVDA,Technology,1.025587684,NVIDIA Corporation,1.025587684,USD
-ORCL,Technology,1.075934476,Oracle Corporation,1.075934476,USD
-R3NK.DE,Industrials,7.362889398,RENK Group AG,7.362889398,EUR
-RHM.DE,Industrials,7.957186434,Rheinmetall AG,7.957186434,EUR
-SAF.PA,Industrials,3.257516584,Safran SA,3.257516584,EUR
-SAP.DE,Technology,6.801517084,SAP SE,6.801517084,EUR
-SCL,Basic Materials,1.243343363,Stepan Company,1.243343363,USD
-TKA.DE,Industrials,3.873994397,thyssenkrupp AG,3.873994397,EUR
-TM,Consumer Cyclical,0.64355534,Toyota Motor Corporation,0.64355534,USD
-TSLA,Consumer Cyclical,0.044363117,"Tesla, Inc.",0.044363117,USD
-TTR1.DE,Industrials,0.800598363,technotrans SE,0.800598363,EUR
-VOW3.DE,Consumer Cyclical,3.604350922,Volkswagen AG,3.604350922,EUR
-WCH.DE,Basic Materials,0.964744127,Wacker Chemie AG,0.964744127,EUR
+8TRA.DE,Industrials,0.872404142,Traton SE,0.872404142,EUR
+AAPL,Technology,0.155853785,Apple Inc.,0.155853785,USD
+ADBE,Technology,1.151996132,Adobe Inc.,1.151996132,USD
+AMD,Technology,0.811400178,"Advanced Micro Devices, Inc.",0.811400178,USD
+ASML.AS,Technology,2.489754626,ASML Holding N.V.,2.489754626,USD
+BAC,Financial Services,1.018279554,Bank of America Corporation,1.018279554,USD
+BARC.L,Financial Services,3.08376681,Barclays PLC,3.08376681,GBp
+BAS,Basic Materials,0.863026904,Badische Anilin- & Soda-Fabrik,0.863026904,EUR
+BRK-B,Financial Services,1.175059721,Berkshire Hathaway Inc.,1.175059721,USD
+CSCO,Technology,0.074629658,"Cisco Systems, Inc.",0.074629658,USD
+CSX,Industrials,0.019056377,CSX Corporation,0.019056377,USD
+DB,Financial Services,0.921306945,Deutsche Bank Aktiengesellschaft,0.921306945,USD
+DBK.DE,Financial Services,5.585904456,Deutsche Bank Aktiengesellschaft,5.585904456,EUR
+ETL.PA,Technology,3.038201644,Eutelsat Communications S.A.,3.038201644,EUR
+GS,Financial Services,0.805663863,"The Goldman Sachs Group, Inc.",0.805663863,USD
+HAG.F,Industrials,4.625184945,Hensoldt AG,4.625184945,EUR
+HPQ,Technology,6.885203096,HP Inc.,6.885203096,USD
+IBKR,Financial Services,0.262591242,"Interactive Brokers Group, Inc.",0.262591242,USD
+IFX.DE,Technology,4.842644789,Infineon Technologies AG,4.842644789,EUR
+JNJ,Healthcare,5.081291687,Johnson & Johnson,5.081291687,USD
+JPM,Financial Services,1.726970808,JPMorgan Chase & Co.,1.726970808,USD
+MOS,Basic Materials,5.136139001,The Mosaic Company,5.136139001,USD
+MSFT,Technology,0.087755702,Microsoft Corporation,0.087755702,USD
+MTX.DE,Industrials,4.866962031,MTU Aero Engines AG,4.866962031,EUR
+NOK,Technology,1.246182135,Nokia Oyj,1.246182135,USD
+NTR,Basic Materials,4.768377263,Nutrien Ltd.,4.768377263,USD
+NVDA,Technology,1.065926892,NVIDIA Corporation,1.065926892,USD
+ORCL,Technology,0.818200392,Oracle Corporation,0.818200392,USD
+R3NK.DE,Industrials,6.575332511,RENK Group AG,6.575332511,EUR
+RHM.DE,Industrials,7.173000969,Rheinmetall AG,7.173000969,EUR
+SAF.PA,Industrials,5.465466151,Safran SA,5.465466151,EUR
+SAP.DE,Technology,6.743577098,SAP SE,6.743577098,EUR
+SCL,Basic Materials,1.537738835,Stepan Company,1.537738835,USD
+SONY,Technology,0.371831739,Sony Group Corporation,0.371831739,USD
+TKA.DE,Industrials,1.762006142,thyssenkrupp AG,1.762006142,EUR
+TM,Consumer Cyclical,1.60554344,Toyota Motor Corporation,1.60554344,USD
+TSLA,Consumer Cyclical,0.794111281,"Tesla, Inc.",0.794111281,USD
+TTR1.DE,Industrials,0.042762995,technotrans SE,0.042762995,EUR
+VOW3.DE,Consumer Cyclical,3.792683636,Volkswagen AG,3.792683636,EUR
+WCH.DE,Basic Materials,0.656210423,Wacker Chemie AG,0.656210423,EUR
