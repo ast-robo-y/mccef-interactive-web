@@ -43,7 +43,7 @@ def BM_Comparison_Daily(link_1BM: str, link_3BM: str, ) -> dict:
     BM_2 = df_2['BM2Return'].values[:]
     BM_3 = df_2['BM3Return'].values[:]
     BM_4 = df_1['BM1Return'].values[:]
-    MCCEF = df_2['ConsolidatedReturn'].values[:]
+    MCCEF = df_2['MCCEFReturn'].values[:]
 
     list_of_tuples = list(zip(date, BM_1, BM_2, BM_3, BM_4, MCCEF))
     df = pd.DataFrame(list_of_tuples, columns=['Date', 
