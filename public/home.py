@@ -14,10 +14,9 @@ def Partners():
     st.header(":blue[Partneři]")
     ibkr = "assets/company_icons/Interactive_Brokers.svg"
     deloitte = "assets/company_icons/Logo_of_Deloitte.png"
-    richfox = "assets/company_icons/RichFoxLogo.webp" 
     bolder = "assets/company_icons/bolder.webp" 
 
-    colpar = st.columns([3, 3, 2, 3],)
+    colpar = st.columns([1, 1, 1],)
     with colpar[0]:
         with open(ibkr, "r", encoding='utf-8') as im_ib:
             ibkr_svg = im_ib.read()
@@ -99,46 +98,6 @@ def Partners():
             unsafe_allow_html=True, #help = del_hover_text
         )
     with colpar[2]:
-        with open(richfox, "rb") as rich:
-            rich_bytes = rich.read()
-        rich_base64 = base64.b64encode(rich_bytes).decode()
-        rf_hover_text = "Investiční manažer"
-        st.markdown(
-            f"""
-            <style>
-            .img-wrap {{
-                position: relative;
-                display: inline-block;
-            }}
-            .img-wrap:hover::after {{
-                content: attr(data-tooltip);
-                position: absolute;
-                bottom: 100%;
-                left: 50%;
-                transform: translateX(-50%);
-                background: #333;
-                color: white;
-                padding: 4px 8px;
-                border-radius: 4px;
-                font-size: 12px;
-                white-space: nowrap;
-                margin-bottom: 6px;
-                z-index: 1000;
-            }}
-            </style>
-            <div style='display: flex; justify-content: center; align-items: flex-end; height: 80px'>
-                <div class="img-wrap" data-tooltip="Investiční manažer">    
-                    <a href="https://www.richfox.com/assets-management/">
-                        <img src="data:image/webp;base64,{rich_base64}"
-                            width="150" height="150"
-                            style="border-radius:0px; margin-bottom:-40px;"
-                    </a>
-                </div>
-            </div>
-            """,
-            unsafe_allow_html=True, #help = rf_hover_text
-        )
-    with colpar[3]:
         with open(bolder, "rb") as b:
             b_bytes = b.read()
         b_base64 = base64.b64encode(b_bytes).decode()
@@ -395,7 +354,7 @@ with coltext[0]:
         """,
         unsafe_allow_html=True
     )
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 15. září 2026</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 1. říjen 2026</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()
