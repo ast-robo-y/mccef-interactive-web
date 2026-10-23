@@ -354,7 +354,7 @@ with coltext[0]:
         """,
         unsafe_allow_html=True
     )
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 1. říjen 2026</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 23. říjen 2026</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()
