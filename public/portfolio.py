@@ -226,7 +226,7 @@ with st.container(border=True,
 st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 23. říjen 2026</span>', unsafe_allow_html=True)
 st.divider()
 
-st.header('Portfolio aktuálních pozic!')
+st.header('Portfolio aktuálních pozic')
 
 @st.fragment
 def Treemap_fig(df, colors):
