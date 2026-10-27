@@ -167,7 +167,7 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
         margin=dict(t=40, b=40, l=50, r=20), 
         showlegend=True, 
         height=650,
-        plot_bgcolor='white',
+        #plot_bgcolor='white',
         xaxis2=dict(title=("Období"), side='bottom', type="date",
                 range=[start_date, (today + timedelta(days=3))],
                 ),
