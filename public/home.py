@@ -187,7 +187,7 @@ funds_text = """
 - **MCCEF: Market Center Concordia Equity Fund**
 - **INDU: Dow Jones Industrial Average**
 - **SPX: S&P 500**  
-- **RUT: Russell 2000 Index**
+- **MXWO: MSIC World Index**
 - **VT: Vanguard Total World Stock**
 """
 
@@ -345,7 +345,8 @@ with coltext[0]:
                     font-size: 24px;
                     font-weight: bold;
                     color: rgba(25,50,100,1);
-                    background-color: rgba(255,255,255,0.5);
+                    <!--background-color: rgba(255,255,255,0.5); -->
+                    background-color: transparent;
                     padding: 5px;
                 ">
                 Návratnost: {round(ret_mccef, 2)} %
@@ -354,7 +355,7 @@ with coltext[0]:
         """,
         unsafe_allow_html=True
     )
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 23. říjen 2026</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 27. říjen 2026</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()

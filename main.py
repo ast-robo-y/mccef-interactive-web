@@ -10,7 +10,9 @@ st.set_page_config(
     layout="wide",
 )
 
-st.logo(str(ASSETS_DIR / "new.png"), size="large")
+st.markdown(ASSETS_DIR)
+st.logo(str(ASSETS_DIR / "new.png") #, size="large"
+        )
 
 
 #main_body_logo2 = 'assets/new.png'
