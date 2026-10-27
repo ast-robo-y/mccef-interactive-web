@@ -15,7 +15,31 @@ st.logo(str(ASSETS_DIR / "new.png") #, size="large"
         )
 
 # Temporary test
-st.image("assets/new.png", width=300)
+
+from PIL import Image
+BASE_DIR = Path(__file__).resolve().parent
+logo_path = BASE_DIR / "assets" / "new.png"
+
+st.write("Path:", str(logo_path))
+st.write("Exists:", logo_path.is_file())
+st.write("Size (bytes):", logo_path.stat().st_size if logo_path.is_file() else "Missing")
+
+if logo_path.is_file():
+    with open(logo_path, "rb") as f:
+        st.write("File signature:", f.read(16).hex())
+
+    try:
+        with Image.open(logo_path) as img:
+            st.write("Image format:", img.format)
+            st.write("Image dimensions:", img.size)
+            img.verify()
+
+        st.image(str(logo_path), width=300)
+        st.success("Image decoded successfully.")
+
+    except Exception as e:
+        st.error(f"Image decoding failed: {e}")
+
 
 
 #main_body_logo2 = 'assets/new.png'
