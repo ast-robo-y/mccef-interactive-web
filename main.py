@@ -10,7 +10,14 @@ st.set_page_config(
     layout="wide",
 )
 
-st.markdown(ASSETS_DIR)
+st.write("Current file:", __file__)
+st.write("Base directory:", str(BASE_DIR))
+st.write("Assets directory:", str(ASSETS_DIR))
+st.write("Assets directory exists:", ASSETS_DIR.is_dir())
+st.write("Logo exists:", (ASSETS_DIR / "new.png").is_file())
+st.write("Favicon exists:", (ASSETS_DIR / "favicon.ico").is_file())
+
+
 st.logo(str(ASSETS_DIR / "new.png") #, size="large"
         )
 
