@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 
-st.logo(str(ASSETS_DIR / "new.png") #, size="large"
+st.logo(str(ASSETS_DIR / "new.png"), size="large"
         )
 
 
