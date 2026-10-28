@@ -19,11 +19,11 @@ jobs:
 
           echo "Requesting: $APP"
 
-          curl --location --max-redirs 5 \
-            --silent --show-error \
+          curl --silent --show-error \
             --max-time 60 \
             --output /dev/null \
-            --write-out "\nFinal URL: %{url_effective}\nHTTP status: %{http_code}\n" \
+            --dump-header - \
+            --write-out "\nHTTP status: %{http_code}\n" \
             "$APP"
 
 
