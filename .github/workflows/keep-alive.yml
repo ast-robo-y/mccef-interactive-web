@@ -13,18 +13,17 @@ jobs:
   ping-app:
     runs-on: ubuntu-latest
     steps:
-      - name: Visit dashboard and subpages
+      - name: Check Streamlit homepage
         run: |
-          APP="https://mccef-interactive-web-site.streamlit.app"
+          APP="https://mccef-interactive-web-site.streamlit.app/"
 
-          for PAGE in "/" "/portfolio"; do
-            echo "Requesting: $APP$PAGE"
+          echo "Requesting: $APP"
 
-            curl --location --silent --show-error \
-              --max-time 60 \
-              --output /dev/null \
-              --write-out "HTTP status: %{http_code}\n" \
-              "$APP$PAGE"
+          curl --silent --show-error \
+            --max-time 60 \
+            --output /dev/null \
+            --dump-header - \
+            --write-out "\nHTTP status: %{http_code}\n" \
+            "$APP"
 
-            sleep 5
-          done
+
