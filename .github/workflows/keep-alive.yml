@@ -1,0 +1,30 @@
+
+name: Keep Streamlit App Alive
+
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ping-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Visit dashboard and subpages
+        run: |
+          APP="https://mccef-interactive-web-site.streamlit.app"
+
+          for PAGE in "/" "/portfolio"; do
+            echo "Requesting: $APP$PAGE"
+
+            curl --location --silent --show-error \
+              --max-time 60 \
+              --output /dev/null \
+              --write-out "HTTP status: %{http_code}\n" \
+              "$APP$PAGE"
+
+            sleep 5
+          done
