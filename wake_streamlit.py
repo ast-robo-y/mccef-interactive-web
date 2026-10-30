@@ -1,4 +1,5 @@
 import os
+import time
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
@@ -13,6 +14,10 @@ STREAMLIT_URL = os.environ.get(
     "https://mccef-interactive-web-site.streamlit.app/"
 )
 
+WAKE_BUTTON = (
+    By.XPATH,
+    "//button[contains(., 'Yes, get this app back up!')]"
+)
 
 def main():
     options = Options()
@@ -25,40 +30,48 @@ def main():
     driver = webdriver.Chrome(options=options)
 
     try:
-        print(f"Opening Streamlit app: {STREAMLIT_URL}")
+        print(f"Opening {STREAMLIT_URL}")
         driver.get(STREAMLIT_URL)
 
         wait = WebDriverWait(driver, 30)
 
         try:
             button = wait.until(
-                EC.element_to_be_clickable(
-                    (
-                        By.XPATH,
-                        "//button[contains(., 'Yes, get this app back up!')]"
-                    )
-                )
+                EC.element_to_be_clickable(WAKE_BUTTON)
             )
 
-            print("Wake-up button found. Clicking...")
+            print("App is sleeping. Clicking wake-up button...")
             button.click()
 
-            wait.until(
-                EC.invisibility_of_element_located(
-                    (
-                        By.XPATH,
-                        "//button[contains(., 'Yes, get this app back up')]"
-                    )
-                )
+            print("Wake-up request sent.")
+            print("Waiting 60 seconds for Streamlit to start...")
+
+            time.sleep(60)
+
+            print("Refreshing page to check app status...")
+            driver.refresh()
+
+            WebDriverWait(driver, 30).until(
+                lambda d: d.execute_script(
+                    "return document.readyState"
+                ) == "complete"
             )
 
-            print("Wake-up button disappeared.")
+            time.sleep(5)
+
+            if driver.find_elements(*WAKE_BUTTON):
+                print("WARNING: Wake-up button is still visible.")
+                print("The app may not have started successfully.")
+                print(driver.find_element(By.TAG_NAME, "body").text)
+
+            else:
+                print("Wake-up button is no longer present.")
+                print("Current page content:")
+                print(driver.find_element(By.TAG_NAME, "body").text[:1000])
 
         except TimeoutException:
-            print(
-                "No wake-up button detected, "
-                "or it did not disappear in time."
-            )
+            print("No wake-up button detected.")
+            print("The app may already be awake.")
 
     finally:
         driver.quit()
