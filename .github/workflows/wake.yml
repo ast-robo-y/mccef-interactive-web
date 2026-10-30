@@ -1,0 +1,33 @@
+name: Wake MC Concordia Streamlit App
+
+on:
+  schedule:
+    - cron: "0 */4 * * *"
+
+  workflow_dispatch:
+
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Selenium
+        run: |
+          python -m pip install --upgrade pip
+          pip install selenium
+
+      - name: Wake Streamlit app
+        run: python wake_streamlit.py
+        env:
+          STREAMLIT_APP_URL: https://mccef-interactive-web-site.streamlit.app/
+
+

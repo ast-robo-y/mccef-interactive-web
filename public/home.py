@@ -161,20 +161,20 @@ if "cumul_sel" not in st.session_state:
     st.session_state["cumul_sel"] = max(cz_c.keys())
 
 
-st.title(":blue[Market Center Concordia Equity Fund]")
+st.title(":blue[MC Concordia Equity Fund]")
 
  
 motto_cz = ' *„Úspěch není o dokonalosti: Stačí se vyhnout velkým chybám a příznivé výsledky přirozeně následují."* '
 title_1_cz = 'O nás'
-text_1_cz = '''Akciový fond MC Concordia spravuje společnost Richfox Capital, dlouholetý partner se sídlem ve Švýcarsku. 
-               Je auditována společností Deloitte a pod dohledem nizozemské centrální banky, což klientům nabízí ujištění o jejím řízení a zabezpečení.
-               Investiční strategie fondu je primárně matematická a využívá proprietární model vyvíjený během 15 let pro oceňování vybraných společností. 
-               Tento přístup si vysloužil uznání, včetně uznání od Bloomberg jako jednoho ze tří největších fondů na světě ve své kategorii.'''
-text_2_cz = '''Tým vedený matematickým stratégem a technickými analytiky se zaměřuje na dlouhodobou správu aktiv s podíly často přesahujícími 10 let.
-               Fond klade důraz na řízení rizik pomocí pokročilých systémů k určení bezpečných objemů obchodů a minimalizaci rizika.
-               Jejich strategie, vyvíjená ve spolupráci s Interactive Brokers od roku 2007, prošla finančními krizemi,
-               demonstrující odolnost a ziskovost. Cílem fondu je konzistentní, racionální analýza se zaměřením na snižování rizik
-               spíše než honit se za krátkodobými zisky.'''
+text_1_cz = '''Akciový fond MC Concordia spravuje společnost MC Concordia B.V. se sídlem v Holandsku. 
+               Je auditována společností Deloitte a pod dohledem nizozemské centrální banky, což klientům nabízí ujištění o jejím řízení a zabezpečení. 
+               Investiční strategie fondu je primárně matematická a využívá proprietární model vyvíjený během 19 let pro oceňování vybraných společností. 
+               Tento přístup od svého založení prošel měnícími se tržními podmínkami, na které dosud dokázal reagovat a prokázal schopnost adaptace.  
+               V 15. roce fungování uspěl v soutěži Bloomberg jako jeden ze tří nejúspěšnějších fondů na světě ve své kategorii.'''
+text_2_cz = '''Tým vedený matematickým stratégem a technickými analytiky se zaměřuje na dlouhodobou správu aktiv s podíly často přesahujícími 10 let. 
+               Fond klade důraz na řízení rizik pomocí pokročilých systémů k určení bezpečných objemů obchodů a minimalizaci rizika. 
+               Jejich strategie, vyvíjená ve spolupráci s Interactive Brokers od roku 2007, prošla finančními krizemi, demonstrující odolnost a ziskovost. 
+               Cílem fondu je konzistentní, racionální analýza se zaměřením na snižování rizik spíše než vyhledávání krátkodobých zisků.'''
 text_3_cz = '''Další informace můžete najít na stránce [mcviva.com](https://www.mcviva.com/).'''
 
 cumul_text_cz = (
@@ -187,7 +187,7 @@ funds_text = """
 - **MCCEF: Market Center Concordia Equity Fund**
 - **INDU: Dow Jones Industrial Average**
 - **SPX: S&P 500**  
-- **MXWO: MSIC World Index**
+- **MXWO: MSCI World Index**
 - **VT: Vanguard Total World Stock**
 """
 
@@ -355,7 +355,7 @@ with coltext[0]:
         """,
         unsafe_allow_html=True
     )
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 27. říjen 2026</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 29. říjen 2026</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()
