@@ -149,7 +149,8 @@ time_options = {
     4: "2024",
     5: "2025",
     6: "2026",
-    7: "All"
+    #7: "All",
+    7: "Custom"
 }
 cz_c = {
      0: "Kumulativní",
@@ -169,7 +170,7 @@ title_1_cz = 'O nás'
 text_1_cz = '''Akciový fond MC Concordia spravuje společnost MC Concordia B.V. se sídlem v Holandsku. 
                Je auditována společností Deloitte a pod dohledem nizozemské centrální banky, což klientům nabízí ujištění o jejím řízení a zabezpečení. 
                Investiční strategie fondu je primárně matematická a využívá proprietární model vyvíjený během 19 let pro oceňování vybraných společností. 
-               Tento přístup od svého založení prošel měnícími se tržními podmínkami, na které dosud dokázal reagovat a prokázal schopnost adaptace.  
+               Tento přístup od svého založení prošel měnícími se tržními podmínkami, na které dosud dokázal reagovat a prokázal schopnost adaptace. 
                V 15. roce fungování uspěl v soutěži Bloomberg jako jeden ze tří nejúspěšnějších fondů na světě ve své kategorii.'''
 text_2_cz = '''Tým vedený matematickým stratégem a technickými analytiky se zaměřuje na dlouhodobou správu aktiv s podíly často přesahujícími 10 let. 
                Fond klade důraz na řízení rizik pomocí pokročilých systémů k určení bezpečných objemů obchodů a minimalizaci rizika. 
@@ -207,71 +208,98 @@ def Portfolio_tickers(l1: str):
 link_1 = 'data/1fund.csv'
 link_2 = 'data/3funds.csv'
 df = load_data(link_1, link_2)
-df1 = load_data(link_1, link_2)
-df2 = load_data(link_1, link_2)
 
 link_positions = 'data/Positions.csv'
 
-@st.cache_data
-def return_mccef_last(df2, time, cumul):
-    is_cumulative = cumul == 0
-    df2 = Make_Growth_or_Cumulative_Return(df2, Cumulative=is_cumulative)
-    times = [2020, 2021, 2022, 2023, 2024, 2025, 2026, 'all']
-    return df2[times[time]]['MCCEF'].iloc[-1]
-
 @st.fragment
-def Gen_Compare_Funds_Plots(df1, time, cumul):
+def Gen_Compare_Funds_Plots(df1, time, cumul, start_date=None, end_date=None):
+
     is_cumulative = cumul == 0
-    df1 = Make_Growth_or_Cumulative_Return(df1, Cumulative=is_cumulative)
+
+    # Custom date range
+    if time == 7:
+
+        plot_df = df1['all'].copy()
+        plot_df["Date"] = pd.to_datetime(plot_df["Date"])
+
+        start_date = pd.Timestamp(start_date)
+        end_date = pd.Timestamp(end_date)
+
+        # Include all observations within the selected period
+        plot_df = plot_df[
+            (plot_df["Date"] >= start_date) &
+            (plot_df["Date"] <= end_date)
+        ].copy()
+
+        # Calculate returns relative to the beginning of the period
+        plot_df = Make_Growth_or_Cumulative_Return(
+            {"custom": plot_df},
+            Cumulative=is_cumulative
+        )['custom']
+
+    else:
+        df1 = Make_Growth_or_Cumulative_Return(
+            {k: v.copy() for k, v in df1.items()},
+            Cumulative=is_cumulative
+        )
+
+        times = [2020, 2021, 2022, 2023, 2024, 2025, 2026, "all"]
+        plot_df = df1[times[time]]
+
+
     fig = go.Figure()
-    times = [2020, 2021, 2022, 2023, 2024, 2025, 2026, 'all']
-    tickers = df1[times[time]].columns[1:]
-    for i, ticker in enumerate(tickers): 
+
+    tickers = plot_df.columns[1:]
+
+    for i, ticker in enumerate(tickers):
+
         fig.add_trace(
             go.Scatter(
-                x=df1[times[time]]["Date"],
-                y=df1[times[time]][ticker],
+                #x=df1[times[time]]["Date"],
+                #y=df1[times[time]][ticker],
+                x=plot_df["Date"],
+                y=plot_df[ticker],
                 mode="lines",
-                hovertext='',
-                hoverinfo='text',
+                #hovertext='',
+                #hoverinfo='text',
                 hovertemplate=(
                     f"<b>{ticker}</b>"
                     "<br>Datum: %{x}<br>"
                     "Hodnota: %{y:,.2f}%<br>"
                 ),
-                name=ticker,
+                name= ticker,
                 hoverlabel= {'namelength': 0},
                 visible=True if (i==0 or i==4) else 'legendonly'
             )
         )
-        fig.update_layout(
-            #autosize=True,
-            height=550,
-            xaxis=dict(
-                title="Období",
-                title_font=dict(size=16,                                ),
-                showgrid=True,
-                gridcolor="rgba(200, 200, 200, 0.3)", 
-                zeroline=False,
-                showline=True,
-                linewidth=1,
-                tickfont=dict(size=12,                              ),
-                rangeslider = dict(visible=False)
-                ),
-            yaxis=dict(
-                title="Návratnost",
-                title_font=dict(size=16,                                ),
-                showgrid=True,
-                gridcolor="rgba(200, 200, 200, 0.3)",
-                zeroline=False,
-                showline=True,
-                linewidth=1,
-                tickfont=dict(size=12,                               ),
-                ticksuffix="%",
-                autorange = True
-                ),
-        )
-    return fig
+    fig.update_layout(
+        #autosize=True,
+        height=550,
+        xaxis=dict(
+            title="Období",
+            title_font=dict(size=16,                                ),
+            showgrid=True,
+            gridcolor="rgba(200, 200, 200, 0.3)", 
+            zeroline=False,
+            showline=True,
+            linewidth=1,
+            tickfont=dict(size=12,                              ),
+            rangeslider = dict(visible=False)
+            ),
+        yaxis=dict(
+            title="Návratnost",
+            title_font=dict(size=16,                                ),
+            showgrid=True,
+            gridcolor="rgba(200, 200, 200, 0.3)",
+            zeroline=False,
+            showline=True,
+            linewidth=1,
+            tickfont=dict(size=12,                               ),
+            ticksuffix="%",
+            autorange = True
+            ),
+    )
+    return fig, plot_df["MCCEF"].iloc[-1]
 
 colmotto = st.columns([7, 1],)
 with colmotto[0]:
@@ -280,7 +308,6 @@ with colmotto[0]:
 with colmotto[0]:
     st.markdown('')
 
-#coltext = st.columns([11, 1, 3],)
 coltext = st.columns([11],)
 with coltext[0]:
     st.title(title_1_cz)
@@ -290,7 +317,11 @@ with coltext[0]:
     st.header('Srovnání s jinými fondy',
                 )
     st.markdown(' ')
-    buttons_cols = st.columns([2,1])
+
+    today = pd.Timestamp.today().date()
+    min_date = pd.Timestamp("2020-02-27").date()
+
+    buttons_cols = st.columns([4,1,1,2])
     with buttons_cols[0]:
         time_sel = st.segmented_control(
             "📆 Vyberte časové období" ,
@@ -300,6 +331,25 @@ with coltext[0]:
             key='time_sel',
         )
     with buttons_cols[1]:
+        start_date = st.date_input(
+            "Od",
+            value=min_date,
+            min_value=min_date,
+            max_value=today,
+            key="custom_start",
+            disabled=(time_sel != 7),
+        )
+
+    with buttons_cols[2]:
+        end_date = st.date_input(
+            "Do",
+            value=today,
+            min_value=min_date,
+            max_value=today,
+            key="custom_end",
+            disabled=(time_sel != 7),
+        )
+    with buttons_cols[3]:
         cumul_sel = st.pills(label="📈 Vyberte metodu návratnosti",
                              options=cz_c.keys(),
                              format_func=lambda option: cz_c[option],
@@ -309,9 +359,15 @@ with coltext[0]:
         )
     with st.container(border=True, height=600
                       ):
-        st.plotly_chart(Gen_Compare_Funds_Plots(df1, time_sel, cumul_sel), #width='stretch',
+        fig, ret_mccef = Gen_Compare_Funds_Plots(
+            df,
+            time_sel,
+            cumul_sel,
+            start_date,
+            end_date,
+        )
+        st.plotly_chart(fig, #width='stretch',
                     )
-        ret_mccef = return_mccef_last(df2, time_sel, cumul_sel)
         st.markdown(
         f"""
         <style>
@@ -355,7 +411,7 @@ with coltext[0]:
         """,
         unsafe_allow_html=True
     )
-    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 29. říjen 2026</span>', unsafe_allow_html=True)
+    st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 2. listopad 2026</span>', unsafe_allow_html=True)
     with st.expander(label="💬 Vysvětlení zkratek fondů"):
         st.markdown(funds_text)
     Partners()

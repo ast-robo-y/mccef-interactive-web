@@ -25,16 +25,19 @@ def CSV_data(trades_link: str, position_link: str):
 trades, portfolio = CSV_data(link_trades, link_positions)
 uniq_ticks = np.unique(portfolio['labels'])
 
-@st.cache_data
+@st.cache_data(ttl=3600)
 def tick_OHLC_GEN(tick):
     stock = yf.Ticker(tick)
     ohlc = stock.history(start='2021-01-15', auto_adjust=False)
     if tick == "BARC.L":
         ohlc = ohlc / 100
+
+    ohlc["1wma"] = ohlc["Close"].rolling(window=7).mean()
+    ohlc["1mma"] = ohlc["Close"].rolling(window=30).mean()
     return ohlc
 
 @st.fragment
-def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataFrame, tick, time):
+def plot_candlestick2(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataFrame, tick, time):
     df_trades_ticker = trades[trades["Symbol"] == tick]
     df_trades = df_trades_ticker.copy()
     df_trades["TradeDate"] = df_trades["TradeDate"].dt.tz_localize('America/New_York')
@@ -47,8 +50,8 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
     if currency == 'GBp':
         currency = 'GBP'
 
-    df['1wma'] = df['Close'].rolling(window=7).mean()
-    df['1mma'] = df['Close'].rolling(window=30).mean()
+    #df['1wma'] = df['Close'].rolling(window=7).mean()
+    #df['1mma'] = df['Close'].rolling(window=30).mean()
     
     now_ny = datetime.now(pytz.timezone("America/New_York"))
     today = now_ny.date()
@@ -181,6 +184,219 @@ def plot_candlestick(df: pd.DataFrame, trades: pd.DataFrame, portfolio: pd.DataF
     return fig
 
 
+@st.fragment
+def plot_candlestick(df, trades, portfolio, tick, time):
+
+    # Timezone
+    tz = df.index.tz
+    now = pd.Timestamp.now(tz=tz)
+
+    # Determine visible period
+    if time == 0:
+        start_date = now - pd.Timedelta(days=90)
+    elif time == 1:
+        start_date = now - pd.Timedelta(days=182)
+    elif time == 2:
+        start_date = now - pd.Timedelta(days=365)
+    elif time == 3:
+        start_date = pd.Timestamp(
+            year=now.year, month=1, day=1, tz=tz
+        )
+    else:
+        start_date = df.index.min()
+
+    end_date = now
+
+    # Filter OHLC BEFORE plotting
+    visible_df = df.loc[
+        (df.index >= start_date) &
+        (df.index <= end_date)
+    ]
+
+    if visible_df.empty:
+        st.warning("Žádná data pro vybrané období.")
+        return None
+
+    # Currency
+    currency = portfolio.loc[
+        portfolio["labels"] == tick, "currency"
+    ].iloc[0]
+
+    if currency == "GBp":
+        currency = "GBP"
+
+    # Filter trades
+    ticker_trades = trades.loc[
+        trades["Symbol"] == tick
+    ].copy()
+
+    if ticker_trades["TradeDate"].dt.tz is None and tz is not None:
+        ticker_trades["TradeDate"] = (
+            ticker_trades["TradeDate"].dt.tz_localize(tz)
+        )
+
+    visible_trades = ticker_trades.loc[
+        (ticker_trades["TradeDate"] >= start_date) &
+        (ticker_trades["TradeDate"] <= end_date)
+    ]
+
+    buys = visible_trades[
+        visible_trades["Buy/Sell"] == "BUY"
+    ]
+
+    sells = visible_trades[
+        visible_trades["Buy/Sell"] == "SELL"
+    ]
+
+    # Calculate position only for visible dates
+    position_trades = (
+        ticker_trades
+        .drop_duplicates("TradeDate", keep="last")
+        .set_index("TradeDate")["QuantityVisual"]
+        .sort_index()
+    )
+
+    positions = position_trades.reindex(
+        visible_df.index,
+        method="ffill"
+    ).fillna(0)
+
+    # Price range
+    visible_min = visible_df["Low"].min()
+    visible_max = visible_df["High"].max()
+
+    fig = make_subplots(
+        rows=2,
+        cols=1,
+        shared_xaxes=True,
+        row_heights=[0.8, 0.2],
+        vertical_spacing=0.1,
+    )
+
+    # Candlesticks
+    fig.add_trace(
+        go.Candlestick(
+            x=visible_df.index,
+            open=visible_df["Open"],
+            high=visible_df["High"],
+            low=visible_df["Low"],
+            close=visible_df["Close"],
+            name="Svíčky",
+            increasing_line_color="#3D9970",
+            increasing_fillcolor="#3D9970",
+            decreasing_line_color="#FF4136",
+            decreasing_fillcolor="#FF4136",
+        ),
+        row=1, col=1
+    )
+
+    # Buy markers
+    fig.add_trace(
+        go.Scattergl(
+            x=buys["TradeDate"],
+            y=buys["TradePrice"],
+            mode="markers",
+            marker=dict(
+                color="green",
+                size=12,
+                symbol="triangle-up",
+                line=dict(width=1, color="darkblue"),
+            ),
+            name="Vykonané Nákupy",
+            hovertemplate=(
+                "<b>NÁKUP</b>: %{x}<br>"
+                f"<b>%{{y:.2f}} {currency}</b>"
+                "<extra></extra>"
+            ),
+        ),
+        row=1, col=1
+    )
+
+    # Sell markers
+    fig.add_trace(
+        go.Scattergl(
+            x=sells["TradeDate"],
+            y=sells["TradePrice"],
+            mode="markers",
+            marker=dict(
+                color="red",
+                size=12,
+                symbol="triangle-down",
+                line=dict(width=1, color="darkblue"),
+            ),
+            name="Vykonané Prodeje",
+            hovertemplate=(
+                "<b>PRODEJ</b>: %{x}<br>"
+                f"<b>%{{y:.2f}} {currency}</b>"
+                "<extra></extra>"
+            ),
+        ),
+        row=1, col=1
+    )
+
+    # Moving averages
+    fig.add_trace(
+        go.Scatter(
+            x=visible_df.index,
+            y=visible_df["1wma"],
+            line=dict(color="blue"),
+            name="7d Klouzavý průměr",
+            opacity=0.5,
+            visible="legendonly",
+        ),
+        row=1, col=1
+    )
+
+    fig.add_trace(
+        go.Scatter(
+            x=visible_df.index,
+            y=visible_df["1mma"],
+            line=dict(color="magenta"),
+            name="30d Klouzavý průměr",
+            opacity=0.5,
+            visible="legendonly",
+        ),
+        row=1, col=1
+    )
+
+    # Portfolio position
+    fig.add_trace(
+        go.Bar(
+            x=visible_df.index,
+            y=positions,
+            opacity=0.6,
+            name="Pozice",
+            hovertemplate="<b>%{x}</b><br>%{y:.2f}<extra></extra>",
+        ),
+        row=2, col=1
+    )
+
+    fig.update_layout(
+        margin=dict(t=40, b=40, l=50, r=20),
+        showlegend=True,
+        height=650,
+        uirevision=f"{tick}-{time}",
+        xaxis2=dict(
+            title="Období",
+            side="bottom",
+            type="date",
+            range=[
+                start_date,
+                end_date + pd.Timedelta(days=3)
+            ],
+        ),
+        xaxis_rangeslider_visible=False,
+        yaxis=dict(
+            title=f"Cena ({currency})",
+            range=[visible_min * 0.98, visible_max * 1.02],
+        ),
+        yaxis2=dict(
+            title="Pozice / Max Pozice (%)",
+        ),
+    )
+
+    return fig
+
 
 time_options = {
     0: "3M",
@@ -223,7 +439,7 @@ ohlc = tick_OHLC_GEN(sel_ticker)
 with st.container(border=True,
                       ):
     st.plotly_chart(plot_candlestick(ohlc, trades, portfolio=portfolio, tick = sel_ticker, time=sel_date))
-st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 29. říjen 2026</span>', unsafe_allow_html=True)
+st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 2. listopad 2026</span>', unsafe_allow_html=True)
 st.divider()
 
 st.header('Portfolio aktuálních pozic')
@@ -235,6 +451,6 @@ with st.container(border=True,
                       ):
     st.plotly_chart(Treemap_fig(portfolio, 'RdYlGn')) 
 
-st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 29. říjen 2026</span>', unsafe_allow_html=True)
+st.markdown('<span style="font-size:9pt; color: grey;">Poslední aktualizace: 2. listopad 2026</span>', unsafe_allow_html=True)
 
 
